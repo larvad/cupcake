@@ -34,7 +34,8 @@ public class UserMapper implements IUserMapper
                 ResultSet rs = ps.executeQuery();
                 if (rs.next())
                 {
-                    String role = rs.getString("role");
+                    boolean isAdmin = rs.getBoolean("isAdmin");
+                    String role = isAdmin ? "admin" : "user";  // yep, "if else" in one line (look up "tertiary operators")
                     user = new User(username, password, role);
                 } else
                 {
@@ -49,21 +50,22 @@ public class UserMapper implements IUserMapper
     }
 
     @Override
-    public User createUser(String username, String password, String role) throws DatabaseException
+    public User createUser(String username, String password, boolean isAdmin) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
         User user;
-        String sql = "insert into user (username, password, role) values (?,?,?)";
+        String sql = "insert into user (username, password, isAdmin) values (?,?,?)";
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
                 ps.setString(1, username);
                 ps.setString(2, password);
-                ps.setString(3, role);
+                ps.setBoolean(3, isAdmin);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)
                 {
+                    String role = isAdmin ? "admin" : "user";
                     user = new User(username, password, role);
                 } else
                 {

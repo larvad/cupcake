@@ -37,8 +37,8 @@ class UserMapperTest
                 // Remove all rows from all tables
                 stmt.execute("delete from user");
                 // Indsæt et par brugere
-                stmt.execute("insert into user (username, password, role) " +
-                        "values ('user','1234','user'),('admin','1234','admin'), ('ben','1234','user')");
+                stmt.execute("insert into user (username, password, isAdmin) " +
+                        "values ('user','1234',false),('admin','1234',true), ('ben','1234',false)");
             }
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
@@ -80,7 +80,7 @@ class UserMapperTest
     @Test
     void createUser() throws DatabaseException
     {
-        User newUser = userMapper.createUser("jill", "1234", "user");
+        User newUser = userMapper.createUser("jill", "1234", false);
         User logInUser = userMapper.login("jill","1234");
         User expectedUser = new User("jill", "1234", "user");
         assertEquals(expectedUser, newUser);
