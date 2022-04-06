@@ -18,13 +18,22 @@
 
         <c:if test="${sessionScope.user != null}">
             <p>You are logged in with the role of "${sessionScope.user.role}".</p>
-            <c:forEach var ="t" items="${requestScope.topping}">
-                <h1>${t.top_flavor} ${t.top_price}</h1>
-            </c:forEach>
-
-
-
-
+            <label for="cupcakeTop">Choose a top:</label>
+            <select name="cupcakeTop" id="cupcakeTop">
+                <c:forEach var ="t" items="${requestScope.topping}">
+                    <option>
+                            <c:out value="${t.top_flavor} ${t.top_price}"/>
+                    </option>
+                </c:forEach>
+            </select>
+            <label for="cupcakeBot">Choose a bottom:</label>
+            <select name="cupcakeBot" id="cupcakeBot">
+                <c:forEach var ="b" items="${requestScope.bottom}">
+                    <option>
+                            <c:out value="${b.bot_flavor} ${b.bot_price}"/>
+                    </option>
+                </c:forEach>
+            </select>
         </c:if>
 
         <c:if test="${sessionScope.user == null}">
