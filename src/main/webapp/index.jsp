@@ -27,7 +27,7 @@
                     </option>
                 </c:forEach>
             </select>
-            <img id="topImg" src="images/Top/top_0.png" alt="Picture of the top part of a cupcake." />
+            <img id="topImg" src="images/Top/top_0.png" alt="Picture of the top part of a cupcake." width="100" height="83.33"/> <br />
             <label for="cupcakeBot">Choose a bottom:</label>
             <select name="cupcakeBot" id="cupcakeBot">
                 <option value="" disabled selected>Vælg bund</option>
@@ -37,7 +37,7 @@
                     </option>
                 </c:forEach>
             </select>
-            <img id="botImg" src="images/Bot/bot_0.png" alt="Picture of the bottom part of a cupcake." />
+            <img id="botImg" src="images/Bot/bot_0.png" alt="Picture of the bottom part of a cupcake." width="100" height="83.33"/>
         </c:if>
 
         <c:if test="${sessionScope.user == null}">
