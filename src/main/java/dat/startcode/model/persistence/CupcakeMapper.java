@@ -29,17 +29,17 @@ public class CupcakeMapper implements ICupcakeMapper {
 
         List<TopDTO> cupcakeTopList = new ArrayList<>();
 
-        String sql = "SELECT t.flavor Topping, t.price topPrice FROM " +
+        String sql = "SELECT t.top_id ID, t.flavor Topping, t.price topPrice FROM " +
                 "top t";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-
+                    int id = rs.getInt("id");
                     String topFlavor = rs.getString("Topping");
                     int topPrice = rs.getInt("topPrice");
-                    TopDTO topDTO = new TopDTO(topFlavor, topPrice);
+                    TopDTO topDTO = new TopDTO(id, topFlavor, topPrice);
                     cupcakeTopList.add(topDTO);
 
                 }
@@ -57,17 +57,17 @@ public class CupcakeMapper implements ICupcakeMapper {
 
         List<BotDTO> cupcakeBotList = new ArrayList<>();
 
-        String sql = "SELECT b.flavor Bottom, b.price botPrice FROM " +
+        String sql = "SELECT b.bottom_id id, b.flavor Bottom, b.price botPrice FROM " +
                 "bottom b";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-
+                    int id = rs.getInt("id");
                     String botFlavor = rs.getString("Bottom");
                     int botPrice = rs.getInt("botPrice");
-                    BotDTO botDTO = new BotDTO(botFlavor, botPrice);
+                    BotDTO botDTO = new BotDTO(id, botFlavor, botPrice);
                     cupcakeBotList.add(botDTO);
 
                 }

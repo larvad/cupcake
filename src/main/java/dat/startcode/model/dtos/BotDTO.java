@@ -2,12 +2,18 @@ package dat.startcode.model.dtos;
 
 public class BotDTO {
 
+    private int id;
     private String bot_flavor;
     private int bot_price;
 
-    public BotDTO(String bot_flavor, int bot_price) {
+    public BotDTO(int id, String bot_flavor, int bot_price) {
+        this.id = id;
         this.bot_flavor = bot_flavor;
         this.bot_price = bot_price;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getBot_flavor() {
