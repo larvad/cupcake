@@ -22,7 +22,7 @@
             <select name="cupcakeTop" id="cupcakeTop">
                 <c:forEach var ="t" items="${requestScope.topping}">
                     <option>
-                            <c:out value="${t.top_flavor} ${t.top_price}"/>
+                            <c:out value="${t.top_flavor}: ${t.top_price} kr"/>
                     </option>
                 </c:forEach>
             </select>
@@ -30,7 +30,7 @@
             <select name="cupcakeBot" id="cupcakeBot">
                 <c:forEach var ="b" items="${requestScope.bottom}">
                     <option>
-                            <c:out value="${b.bot_flavor} ${b.bot_price}"/>
+                            <c:out value="${b.bot_flavor}: ${b.bot_price} kr"/>
                     </option>
                 </c:forEach>
             </select>
