@@ -20,31 +20,24 @@
             <p>You are logged in with the role of "${sessionScope.user.role}".</p>
             <label for="cupcakeTop">Choose a top:</label>
             <select name="cupcakeTop" id="cupcakeTop">
+                <option value="" disabled selected>Vælg top</option>
                 <c:forEach var ="t" items="${requestScope.topping}">
                     <option value="<c:out value="${t.top_flavor}" />" id="<c:out value="${t.id}" />">
                             <c:out value="${t.top_flavor}: ${t.top_price} kr"/>
                     </option>
                 </c:forEach>
             </select>
-            <p id="topTekst"></p>
-            <img id="topImg" src="images/Top/top_0.png" alt="Picture of the top part of a muffin."/>
+            <img id="topImg" src="images/Top/top_0.png" alt="Picture of the top part of a cupcake." />
             <label for="cupcakeBot">Choose a bottom:</label>
             <select name="cupcakeBot" id="cupcakeBot">
+                <option value="" disabled selected>Vælg bund</option>
                 <c:forEach var ="b" items="${requestScope.bottom}">
-                    <option>
+                    <option value="<c:out value="${b.bot_flavor}" />" id="<c:out value="${b.id}" />">
                             <c:out value="${b.bot_flavor}: ${b.bot_price} kr"/>
                     </option>
                 </c:forEach>
             </select>
-            <script>
-                if (document.getElementById("cupcakeTop") != null) {
-                    document.getElementById("cupcakeTop").onchange = function() {
-                        document.getElementById("topTekst").innerHTML = this.value;
-                        let imgTop = "images/Top/top_" + this.id + ".png";
-                        document.getElementById("topImg").setAttribute("src", imgTop);
-                    }
-                }
-            </script>
+            <img id="botImg" src="images/Bot/bot_0.png" alt="Picture of the bottom part of a cupcake." />
         </c:if>
 
         <c:if test="${sessionScope.user == null}">
