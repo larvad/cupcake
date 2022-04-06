@@ -30,6 +30,8 @@ public class Login extends HttpServlet
     public void init() throws ServletException
     {
         this.connectionPool = ApplicationStart.getConnectionPool();
+        cupcakeMapper = new CupcakeMapper(connectionPool);
+
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
@@ -45,6 +47,7 @@ public class Login extends HttpServlet
         HttpSession session = request.getSession();
         session.setAttribute("user", null); // adding empty user object to session scope
         UserMapper userMapper = new UserMapper(connectionPool);
+        cupcakeMapper = new CupcakeMapper(connectionPool);
         User user = null;
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -53,8 +56,8 @@ public class Login extends HttpServlet
         {
             List<BotDTO> BotDTOList = cupcakeMapper.getCupcakesBot();
             List<TopDTO> TopDTOList = cupcakeMapper.getCupcakesTop();
-            request.setAttribute("topping", BotDTOList);
-            request.setAttribute("bottom", TopDTOList);
+            request.setAttribute("topping", TopDTOList);
+            request.setAttribute("bottom", BotDTOList);
             user = userMapper.login(username, password);
             session = request.getSession();
             session.setAttribute("user", user); // adding user object to session scope

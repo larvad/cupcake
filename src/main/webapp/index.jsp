@@ -19,7 +19,7 @@
         <c:if test="${sessionScope.user != null}">
             <p>You are logged in with the role of "${sessionScope.user.role}".</p>
             <c:forEach var ="t" items="${requestScope.topping}">
-                <h4>${t.flavor} ${t.price}</h4>
+                <h1>${t.top_flavor} ${t.top_price}</h1>
             </c:forEach>
 
 
