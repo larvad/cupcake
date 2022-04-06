@@ -6,16 +6,16 @@ public class User
 {
     private String username;
     private String password;
+    private String email;
     private String role;
 
-    public User(String username, String password, String role)
+    public User(String username, String password, String email, String role)
     {
         this.username = username;
         this.password = password;
+        this.email = email;
         this.role = role;
     }
-
-
 
     @Override
     public String toString()
@@ -23,6 +23,7 @@ public class User
         return "User{" +
                 "brugerNavn='" + username + '\'' +
                 ", kodeord='" + password + '\'' +
+                ", email='" + email + '\'' +
                 ", rolle='" + role + '\'' +
                 '}';
     }
@@ -47,6 +48,14 @@ public class User
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getRole()
     {
         return role;
@@ -64,12 +73,12 @@ public class User
         if (!(o instanceof User)) return false;
         User user = (User) o;
         return getUsername().equals(user.getUsername()) && getPassword().equals(user.getPassword()) &&
-                getRole().equals(user.getRole());
+                getRole().equals(user.getRole()) && getEmail().equals(user.getEmail());
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(getUsername(), getPassword(), getRole());
+        return Objects.hash(getUsername(), getPassword(), getEmail(), getRole());
     }
 }
