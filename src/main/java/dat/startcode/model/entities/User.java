@@ -8,13 +8,15 @@ public class User
     private String password;
     private String email;
     private String role;
+    private int balance;
 
-    public User(String username, String password, String email, String role)
+    public User(String username, String password, String email, String role, int balance)
     {
         this.username = username;
         this.password = password;
         this.email = email;
         this.role = role;
+        this.balance = balance;
     }
 
     @Override
@@ -25,6 +27,7 @@ public class User
                 ", kodeord='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", rolle='" + role + '\'' +
+                ", balance='" + balance + '\'' +
                 '}';
     }
 
@@ -66,6 +69,14 @@ public class User
         this.role = role;
     }
 
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
     @Override
     public boolean equals(Object o)
     {
@@ -73,12 +84,12 @@ public class User
         if (!(o instanceof User)) return false;
         User user = (User) o;
         return getUsername().equals(user.getUsername()) && getPassword().equals(user.getPassword()) &&
-                getRole().equals(user.getRole()) && getEmail().equals(user.getEmail());
+                getRole().equals(user.getRole()) && getEmail().equals(user.getEmail()) && (getBalance() == user.getBalance());
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(getUsername(), getPassword(), getEmail(), getRole());
+        return Objects.hash(getUsername(), getPassword(), getEmail(), getRole(), getBalance());
     }
 }
