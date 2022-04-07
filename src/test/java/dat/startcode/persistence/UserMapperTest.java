@@ -18,7 +18,7 @@ class UserMapperTest
 {
     private final static String USER = "root";
     private final static String PASSWORD = "root";
-    private final static String URL = "jdbc:mysql://localhost:3306/startcode_test?serverTimezone=CET&allowPublicKeyRetrieval=true&useSSL=false";
+    private final static String URL = "jdbc:mysql://localhost:3306/cupcake_test?serverTimezone=CET&allowPublicKeyRetrieval=true&useSSL=false";
 
     private static ConnectionPool connectionPool;
     private static UserMapper userMapper;
@@ -37,8 +37,8 @@ class UserMapperTest
                 // Remove all rows from all tables
                 stmt.execute("delete from user");
                 // Indsæt et par brugere
-                stmt.execute("insert into user (username, password, isAdmin) " +
-                        "values ('user','1234',false),('admin','1234',true), ('ben','1234',false)");
+                stmt.execute("insert into user (username, password, email, isAdmin) " +
+                        "values ('user','1234','u@u.dk',false),('admin','1234','a@a.dk',true), ('ben','1234','bz@b.dk',false)");
             }
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
@@ -60,7 +60,7 @@ class UserMapperTest
     @Test
     void login() throws DatabaseException
     {
-        User expectedUser = new User("user","1234","user");
+        User expectedUser = new User("user","1234", "u@u.dk", "user");
         User actualUser = userMapper.login("user","1234");
         assertEquals(expectedUser, actualUser);
     }
@@ -80,9 +80,9 @@ class UserMapperTest
     @Test
     void createUser() throws DatabaseException
     {
-        User newUser = userMapper.createUser("jill", "1234", false);
+        User newUser = userMapper.createUser("jill", "1234", "j@j.dk", false);
         User logInUser = userMapper.login("jill","1234");
-        User expectedUser = new User("jill", "1234", "user");
+        User expectedUser = new User("jill", "1234", "j@j.dk", "user");
         assertEquals(expectedUser, newUser);
         assertEquals(expectedUser, logInUser);
 
