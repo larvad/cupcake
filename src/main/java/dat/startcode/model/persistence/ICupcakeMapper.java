@@ -12,6 +12,8 @@ public interface ICupcakeMapper {
 
     public List<TopDTO> getCupcakesTop() throws DatabaseException;
     public List<BotDTO> getCupcakesBot() throws DatabaseException;
+    public TopDTO findCupcakeTop(int id) throws DatabaseException;
+    public BotDTO findCupcakeBot(int id) throws DatabaseException;
 
     }
 

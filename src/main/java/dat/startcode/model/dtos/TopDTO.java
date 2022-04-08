@@ -39,4 +39,5 @@ public class TopDTO {
                 ", top_price=" + top_price +
                 '}';
     }
+
 }

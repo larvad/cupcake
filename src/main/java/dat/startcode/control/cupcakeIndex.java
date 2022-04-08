@@ -31,6 +31,7 @@ public class cupcakeIndex extends HttpServlet {
 
         try
         {
+
             List<BotDTO> BotDTOList = cupcakeMapper.getCupcakesBot();
             List<TopDTO> TopDTOList = cupcakeMapper.getCupcakesTop();
             request.setAttribute("topping", BotDTOList);
@@ -50,6 +51,13 @@ public class cupcakeIndex extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        HttpSession session = request.getSession();
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        int cupcakeTop = Integer.parseInt(request.getParameter("cupcakeTop"));
+        int cupcakeBot = Integer.parseInt(request.getParameter("cupcakeBot"));
+
+        request.getRequestDispatcher("index.jsp").forward(request, response);
 
     }
 }

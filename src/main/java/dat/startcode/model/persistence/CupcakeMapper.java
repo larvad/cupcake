@@ -78,4 +78,55 @@ public class CupcakeMapper implements ICupcakeMapper {
         }
         return cupcakeBotList;
     }
+
+    @Override
+    public BotDTO findCupcakeBot(int id) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        BotDTO botDTO = null;
+
+        String sql = "SELECT b.bottom_id id, b.flavor Bottom, b.price botPrice FROM " +
+                "bottom b WHERE bottom_id = ?";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1,id);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    String botFlavor = rs.getString("Bottom");
+                    int botPrice = rs.getInt("botPrice");
+                    botDTO = new BotDTO(id, botFlavor, botPrice);
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return botDTO;
+    }
+
+    @Override
+    public TopDTO findCupcakeTop(int id) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        TopDTO topDTO = null;
+
+        String sql = "SELECT t.top_id ID, t.flavor Topping, t.price topPrice FROM " +
+                "top t WHERE top_id = ?";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, id);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    String topFlavor = rs.getString("Topping");
+                    int topPrice = rs.getInt("topPrice");
+                    topDTO = new TopDTO(id, topFlavor, topPrice);
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return topDTO;
+    }
+
 }
