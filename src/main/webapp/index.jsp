@@ -42,14 +42,12 @@
                 <input type="number" id="quantity" name="quantity" value="1" min="1" max="99">
                 <button formaction="orderList">Add to</button>
 
-
                 <div class="body">
                     <div class="Cart-Container">
                         <div class="Header">
                             <h3 class="Heading">Shopping Cart</h3>
-                            <button formaction="orderList" class="Action">Remove all</button>
+                            <button formaction="CartRefresh" class="Action" name="refresh" value="0" >Remove all</button>
                         </div>
-                        <form method="post">
                         <c:forEach var="c" items="${sessionScope.cartCupcakes}">
                         <div class="Cart-Items">
                             <div class="image-box">
@@ -65,21 +63,29 @@
                                 <h3 class="subtitle">Med ${c.botDTO.bot_flavor} bund og ${c.topDTO.top_flavor} top </h3>
                             </div>
                             <div class="counter">
-                                <div class="count">Antal: ${c.quantity}</div>
+                                <div class="count">Antal:
+                                    <form method="post">
+                                    <input type="number" id="quantityRefresh" name="quantityRefresh" value="${c.quantity}"
+                                           min="1" max="99">
+                                    <button formaction="CartRefresh" class="Action" name="refresh" value="${c.cupcakeID}">Update</button>
+                                    </form>
+                                </div>
                             </div>
                             <div class="prices">
                                 <div class="amount">Pris: ${(c.botDTO.bot_price + c.topDTO.top_price)*c.quantity}DK </div>
-                                <div class="remove"><u>Remove</u></div>
+                                <form method="post">
+                                    <input type="hidden" name="cupcakeToRemove" value="${c.cupcakeID}">
+                                    <button formaction="CartRefresh" class="cupcakeToRemove" name="refresh" value="101" >Remove</button>
+                                </form>
                             </div>
                         </div>
                         </c:forEach>
-                        </form>
+
                     </div>
 
                 </div>
-
-
             </form>
+
         </c:if>
 
         <c:if test="${sessionScope.user == null}">

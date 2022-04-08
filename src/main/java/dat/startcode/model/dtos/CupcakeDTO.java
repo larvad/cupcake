@@ -25,6 +25,9 @@ public class CupcakeDTO {
 
     }
 
+    public void setCupcakeID(int cupcakeID) {
+        this.cupcakeID = cupcakeID;
+    }
 
     public BotDTO getBotDTO() {
         return botDTO;

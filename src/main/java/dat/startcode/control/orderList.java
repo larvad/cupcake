@@ -41,26 +41,22 @@ public class orderList extends HttpServlet {
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         int cupcakeTop = Integer.parseInt(request.getParameter("cupcakeTop"));
         int cupcakeBot = Integer.parseInt(request.getParameter("cupcakeBot"));
-        BotDTO botDTO = null;
-        TopDTO topDTO = null;
 
         try
         {
-            botDTO = cupcakeMapper.findCupcakeBot(cupcakeBot);
-            topDTO = cupcakeMapper.findCupcakeTop(cupcakeTop);
-            int topPrice = botDTO.getBot_price();
-            int botPrice = topDTO.getTop_price();
-
-
-            int totalPrice = quantity * (topPrice+botPrice);
+            BotDTO botDTO = cupcakeMapper.findCupcakeBot(cupcakeBot);
+            TopDTO topDTO = cupcakeMapper.findCupcakeTop(cupcakeTop);
 
             HttpSession session = request.getSession();
             if (session != null) {
                 List<CupcakeDTO> cartCupcakes = (List<CupcakeDTO>) session.getAttribute("cartCupcakes");
-                int cupcakeId = 1;
+                int cupcakeId = 0;
                 if (cartCupcakes.size()>=1){
-                    cupcakeId++;
+                    cupcakeId = cartCupcakes.size()+1;
                 }
+                if (cartCupcakes.size()<1) {
+                   cupcakeId = 1;
+               }
 
                 cartCupcakes.add(new CupcakeDTO(botDTO, topDTO, quantity, cupcakeId));
                 request.getRequestDispatcher("index.jsp").forward(request, response);
