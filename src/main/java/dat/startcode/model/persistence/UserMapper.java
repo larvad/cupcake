@@ -34,6 +34,7 @@ public class UserMapper implements IUserMapper
                 ResultSet rs = ps.executeQuery();
                 if (rs.next())
                 {
+                    int id = rs.getInt("user_id");
                     boolean isAdmin = rs.getBoolean("isAdmin");
                     String role = isAdmin ? "admin" : "user";  // yep, "if else" in one line (look up "tertiary operators")
                     String email = rs.getString("email");
@@ -83,5 +84,32 @@ public class UserMapper implements IUserMapper
         return user;
     }
 
+    @Override
+    public int updateUserBalance(User user, int amountToAdd) throws DatabaseException {
+        int result = 0;
+        String sql = "UPDATE user " +
+                     "SET balance = balance + ? " +
+                     "WHERE email = ?";
 
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, amountToAdd);
+                ps.setString(2, user.getEmail());
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1) {
+                    String sql2 = "SELECT balance FROM user WHERE email = ?";
+                    try (PreparedStatement ps2 = connection.prepareStatement(sql2)) {
+                        ps2.setString(1, user.getEmail());
+                        ResultSet rs = ps2.executeQuery();
+                        if (rs.next()) {
+                            result = rs.getInt(1);
+                        }
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException("User doesn't exist");
+        }
+        return result;
+    }
 }
