@@ -1,0 +1,32 @@
+.checkout-body {
+
+    background-color: #130f40;
+}
+.checkout-pageHeader {
+    margin-top: 50px;
+    text-align: center;
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 80px;
+    color: #130f40;
+
+}
+.checkout-bodyHeader {
+
+    padding-top: 30px;
+    margin-bottom: 20px;
+    color: white;
+
+}
+.cart-detail2 {
+    padding-left: 150px;
+    margin-bottom: 20px;
+}
+
+
+.cart-detail-img2 img {
+    height: 100px;
+    width: auto;
+    margin-bottom: -21px;
+
+}

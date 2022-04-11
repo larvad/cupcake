@@ -13,8 +13,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "CartRefresh", value = "/CartRefresh")
-public class CartRefresh extends HttpServlet {
+@WebServlet(name = "checkout", value = "/checkout")
+public class checkout extends HttpServlet {
+
     private ConnectionPool connectionPool;
     private CupcakeMapper cupcakeMapper;
 
@@ -22,23 +23,22 @@ public class CartRefresh extends HttpServlet {
     public void init() throws ServletException {
         this.connectionPool = ApplicationStart.getConnectionPool();
         cupcakeMapper = new CupcakeMapper(connectionPool);
-
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
         int refresh = Integer.parseInt(request.getParameter("refresh"));
+
         int total_price = 0;
 
         try {
+
             HttpSession session = request.getSession();
             if (session != null) {
 
@@ -87,16 +87,14 @@ public class CartRefresh extends HttpServlet {
                     cartCupcakes = new ArrayList<>();
                     session.setAttribute("cartCupcakes", cartCupcakes);
                     session.setAttribute("totalPrice", total_price);
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    request.getRequestDispatcher("checkout.jsp").forward(request, response);
                 }
 
                 // Send to checkout page
                 if (refresh == 103) {
 
-                    int orderId = cupcakeMapper.getOrderId();
                     session.setAttribute("totalPrice", total_price);
                     session.setAttribute("cartCupcakes", cartCupcakes);
-                    session.setAttribute("orderId", orderId);
                     request.getRequestDispatcher("checkout.jsp").forward(request, response);
                 }
 
@@ -106,11 +104,12 @@ public class CartRefresh extends HttpServlet {
                 }
                 session.setAttribute("totalPrice", total_price);
                 session.setAttribute("cartCupcakes", cartCupcakes);
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("checkout.jsp").forward(request, response);
             }
-
-        } catch (IOException | DatabaseException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 }

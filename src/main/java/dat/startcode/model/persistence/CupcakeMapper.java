@@ -105,6 +105,30 @@ public class CupcakeMapper implements ICupcakeMapper {
     }
 
     @Override
+    public int getOrderId() throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        int orderId = 0;
+
+        String sql = "SELECT max(order_id) FROM cupcake.order";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    orderId = rs.getInt("max(order_id)");
+                }
+
+            }
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return orderId+1;
+    }
+
+        @Override
     public TopDTO findCupcakeTop(int id) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
 
@@ -128,5 +152,6 @@ public class CupcakeMapper implements ICupcakeMapper {
         }
         return topDTO;
     }
+
 
 }

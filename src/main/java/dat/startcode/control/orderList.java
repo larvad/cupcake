@@ -58,7 +58,13 @@ public class orderList extends HttpServlet {
                    cupcakeId = 1;
                }
 
+                int total_price = 0;
                 cartCupcakes.add(new CupcakeDTO(botDTO, topDTO, quantity, cupcakeId));
+                for (CupcakeDTO cartCupcake : cartCupcakes) {
+
+                    total_price = total_price + cartCupcake.getTotalPrice();
+                }
+                session.setAttribute("totalPrice", total_price);
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
 
