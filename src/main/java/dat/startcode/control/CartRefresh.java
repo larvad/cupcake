@@ -44,6 +44,7 @@ public class CartRefresh extends HttpServlet {
 
                 List<CupcakeDTO> cartCupcakes = (List<CupcakeDTO>) session.getAttribute("cartCupcakes");
 
+
                 //Hvis Update
 
                 if (refresh > 0 && refresh < 100) {
@@ -55,6 +56,12 @@ public class CartRefresh extends HttpServlet {
                     }
                     int quantityRefresh = Integer.parseInt(request.getParameter("quantityRefresh"));
                     tempCupcakeDTO.setQuantity(quantityRefresh);
+                    for (CupcakeDTO cartCupcake : cartCupcakes) {
+                        total_price = total_price + cartCupcake.getTotalPrice();
+                    }
+                    session.setAttribute("totalPrice", total_price);
+                    session.setAttribute("cartCupcakes", cartCupcakes);
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
 
                 }
 
@@ -77,6 +84,12 @@ public class CartRefresh extends HttpServlet {
                             int i = cartCupcakes.indexOf(cartCupcake);
                             cartCupcake.setCupcakeID(i + 1);
                         }
+                        for (CupcakeDTO cartCupcake : cartCupcakes) {
+                            total_price = total_price + cartCupcake.getTotalPrice();
+                        }
+                        session.setAttribute("totalPrice", total_price);
+                        session.setAttribute("cartCupcakes", cartCupcakes);
+                        request.getRequestDispatcher("index.jsp").forward(request, response);
                     }
                 }
 
@@ -86,27 +99,27 @@ public class CartRefresh extends HttpServlet {
                     //Hvis der trykkes remove all knap
                     cartCupcakes = new ArrayList<>();
                     session.setAttribute("cartCupcakes", cartCupcakes);
+                    for (CupcakeDTO cartCupcake : cartCupcakes) {
+                        total_price = total_price + cartCupcake.getTotalPrice();
+                    }
                     session.setAttribute("totalPrice", total_price);
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
+
 
                 // Send to checkout page
                 if (refresh == 103) {
 
                     int orderId = cupcakeMapper.getOrderId();
-                    session.setAttribute("totalPrice", total_price);
-                    session.setAttribute("cartCupcakes", cartCupcakes);
                     session.setAttribute("orderId", orderId);
+                    for (CupcakeDTO cartCupcake : cartCupcakes) {
+                        total_price = total_price + cartCupcake.getTotalPrice();
+                    }
+                    session.setAttribute("totalPrice", total_price);
                     request.getRequestDispatcher("checkout.jsp").forward(request, response);
                 }
 
 
-                for (CupcakeDTO cartCupcake : cartCupcakes) {
-                    total_price = total_price + cartCupcake.getTotalPrice();
-                }
-                session.setAttribute("totalPrice", total_price);
-                session.setAttribute("cartCupcakes", cartCupcakes);
-                request.getRequestDispatcher("index.jsp").forward(request, response);
             }
 
         } catch (IOException | DatabaseException e) {

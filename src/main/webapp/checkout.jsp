@@ -46,22 +46,29 @@
                                 <img src="images/Bot/bot_${c.botDTO.id}.png">
                             </div>
                         </div>
-                        <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
-                            <p>Cupcake design #${c.cupcakeID}</p>
-                            <p class="cart-subtitle">Med ${c.botDTO.bot_flavor} bund og ${c.topDTO.top_flavor} top</p>
-                            <span class="price text-info">Pris: ${(c.botDTO.bot_price + c.topDTO.top_price)*c.quantity} DK</span>
-                            <span class="count"> Antal: ${c.quantity}</span>
-                            <form method="post">
-                                <input type="number" id="quantityRefresh" name="quantityRefresh" value="${c.quantity}"
-                                       min="1" max="99">
-                                <button class="btn btn-primary btn-update" formaction="checkout" name="refresh"
-                                        value="${c.cupcakeID}">Update
-                                </button>
-                                <button class="btn btn-primary btn-remove" formaction="checkout" name="refresh"
-                                        value="101">x
-                                    <input type="hidden" name="cupcakeToRemove" value="${c.cupcakeID}">
-                                </button>
-                            </form>
+<%--                        cart-detail-product--%>
+                        <div class="col-lg-8 col-sm-8 col-8 cart-product">
+                            <div class="row1">
+                                <h2>Cupcake design #${c.cupcakeID}</h2>
+                                <p class="cart-subtitle">Med ${c.botDTO.bot_flavor} bund og ${c.topDTO.top_flavor} top</p>
+                            </div>
+                            <div class="row2 text-center">
+                                <span class="price text-info">Pris: ${(c.botDTO.bot_price + c.topDTO.top_price)*c.quantity} DK</span>
+                                <span class="count"> Antal: <span class="count2">${c.quantity}</span></span>
+                            </div>
+                            <div class="row3 ">
+                                <form method="post">
+                                    <input type="number" id="quantityRefresh" name="quantityRefresh" value="${c.quantity}"
+                                           min="1" max="99">
+                                    <button class="btn btn-primary btn-update" formaction="checkout" name="refresh"
+                                            value="${c.cupcakeID}">Update
+                                    </button>
+                                    <button class="btn btn-primary btn-remove" formaction="checkout" name="refresh"
+                                            value="101">x
+                                        <input type="hidden" name="cupcakeToRemove" value="${c.cupcakeID}">
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </c:forEach>

@@ -57,7 +57,9 @@
                                                 <i class="fa fa-shopping-cart" aria-hidden="true" style="color: white"></i> <span class="badge badge-pill badge-danger">${sessionScope.cartCupcakes.size()}</span>
                                             </div>
                                             <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
-                                                <p><button class="buttonClear" ></button></p>
+                                                <form method="post">
+                                                <p><button class="buttonClear" formaction="CartRefresh" name="refresh" value="102">Remove all</button></p>
+                                                </form>
                                             </div>
                                         </div>
                                         <c:forEach var="c" items="${sessionScope.cartCupcakes}">
