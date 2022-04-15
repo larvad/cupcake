@@ -21,7 +21,7 @@
 .cart-detail2 {
     padding-left: 150px;
     padding-right: 250px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 
@@ -32,7 +32,7 @@
 
 }
 .cart-product {
-    margin-bottom: 70px;
+    margin-bottom: 40px;
 }
 .row1 {
 
@@ -67,16 +67,80 @@
     margin-top: -10px;
 }
 .row2 .count {
-    padding-left: 20px;
-
+    padding-left: 20px
 
 }
-
-
 .row3 {
 
     padding-left: 400px;
     margin-right: -150px;
     margin-top: -100px;
     padding-top: -500px;
+}
+.tilbage {
+    color: blue !important;
+}
+
+.row .total .total-sub1 {
+
+    padding-left: 170px;
+}
+
+.row .total .total-amount1 {
+
+    padding-right: 150px;
+    font-size: 70px;
+}
+.btn-checkout {
+
+}
+.btn-cancel {
+
+    background-color: red !important;
+
+}
+.row5 {
+
+}
+
+.row5 .btn1 {
+    padding-left: 500px;
+    padding-bottom: 100px;
+    padding-top: 60px;
+
+}
+.Subtotal1 {
+
+    font-size: 60px;
+}
+
+.box1 img{
+
+    width: 200px;
+    height: auto;
+}
+.box1 .input2 {
+    padding-left: 100px;
+
+}
+.row .box1 {
+    padding-left: 400px;
+    padding-top: 20px;
+}
+
+.row .paychoice {
+    text-align: center;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 25px;
+    color: #ffffff;
+
+}
+.row .choosepay {
+
+    padding-top: 80px;
+    text-align: center;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 40px;
+    color: #ffffff;
+
 }

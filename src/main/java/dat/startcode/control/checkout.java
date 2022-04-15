@@ -127,6 +127,8 @@ public class checkout extends HttpServlet {
                     cupcakeMapper.setCupcakeLines(orderId, cartCupcake.getQuantity(), cartCupcake.getTopDTO().getId(), cartCupcake.getBotDTO().getId(), cartCupcake.getTotalPrice());
                     }
 
+                    cartCupcakes = new ArrayList<>();
+                    session.setAttribute("cartCupcakes", cartCupcakes);
                     session.setAttribute("orderId", orderId);
                     request.getRequestDispatcher("checkoutComplete.jsp").forward(request, response);
 
