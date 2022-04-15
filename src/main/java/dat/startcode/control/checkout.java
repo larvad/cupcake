@@ -119,7 +119,7 @@ public class checkout extends HttpServlet {
 
                     for (CupcakeDTO cartCupcake : cartCupcakes) {
 
-                    int hej = cupcakeMapper.setCupcakeLines(orderID, cartCupcake.getQuantity(), cartCupcake.getTopDTO().getId(), cartCupcake.getBotDTO().getId());
+                    cupcakeMapper.setCupcakeLines(orderID, cartCupcake.getQuantity(), cartCupcake.getTopDTO().getId(), cartCupcake.getBotDTO().getId());
                     }
 
                     request.getRequestDispatcher("checkoutComplete.jsp").forward(request, response);
