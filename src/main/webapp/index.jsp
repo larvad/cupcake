@@ -46,7 +46,7 @@
                     <div class="boxesRight3">
                         <div class="title">
                             <p>Tilføj til kurv</p>
-                            <input type="number" id="quantity" name="quantity" value="1" min="1" max="99">
+                            <input type="number" id="quantity" name="quantity" value="1" min="1" max="99" style="width: 75px">
                             <button class="btn-shop1 btn-shop" formaction="orderList" id="addTo">Add to</button>
                         </div>
                     </div>

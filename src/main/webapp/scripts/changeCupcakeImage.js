@@ -2,8 +2,8 @@ let topEn = false;
 let botEn = false;
 if ((document.getElementById("cupcakeTop") != null) &&
     (document.getElementById("cupcakeBot") != null)) {
-    let button = document.querySelector("#addTo");
-    button.disabled = true;
+    let addToButton = document.querySelector("#addTo");
+    addToButton.disabled = true;
     document.getElementById("cupcakeTop").onchange = function() {
         let cupcakeTop = document.querySelector("#cupcakeTop");
         let imgId = cupcakeTop.options[cupcakeTop.selectedIndex].id;
@@ -11,7 +11,7 @@ if ((document.getElementById("cupcakeTop") != null) &&
         document.getElementById("topImg").setAttribute("src", imgTop);
         topEn = true;
         if (topEn && botEn) {
-            button.disabled = false;
+            addToButton.disabled = false;
         }
     }
     document.getElementById("cupcakeBot").onchange = function() {
@@ -21,7 +21,7 @@ if ((document.getElementById("cupcakeTop") != null) &&
         document.getElementById("botImg").setAttribute("src", imgBot);
         botEn = true;
         if (topEn && botEn) {
-            button.disabled = false;
+            addToButton.disabled = false;
         }
     }
 }
