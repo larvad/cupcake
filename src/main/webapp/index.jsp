@@ -32,7 +32,7 @@
                         </div>
                         <select name="cupcakeTop" id="cupcakeTop"
                                 class="selector btn-selector btn-selectorGradient">
-                            <option value="" disabled selected>Choose a top</option>
+                            <option value="0" disabled selected>Choose a top</option>
                             <c:forEach var="t" items="${sessionScope.topping}">
                                 <option value="<c:out value="${t.id}" />" id="<c:out value="${t.id}" />">
                                     <c:out value="${t.top_flavor}: ${t.top_price} kr"/>
@@ -47,7 +47,7 @@
                         <div class="title">
                             <p>Tilføj til kurv</p>
                             <input type="number" id="quantity" name="quantity" value="1" min="1" max="99">
-                            <button class="btn-shop1 btn-shop" formaction="orderList">Add to</button>
+                            <button class="btn-shop1 btn-shop" formaction="orderList" id="addTo">Add to</button>
                         </div>
                     </div>
                     <div class="boxesRight2">
@@ -55,7 +55,7 @@
                             <p>Vælg en bund</p>
                         </div>
                         <select name="cupcakeBot" id="cupcakeBot" class="btn-selector btn-selectorGradient">
-                            <option value="" disabled selected>Choose a bottom</option>
+                            <option value="0" disabled selected>Choose a bottom</option>
                             <c:forEach var="b" items="${sessionScope.bottom}">
                                 <option value="<c:out value="${b.id}" />" id="<c:out value="${b.id}" />">
                                     <c:out value="${b.bot_flavor}: ${b.bot_price} kr"/>
