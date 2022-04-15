@@ -122,30 +122,30 @@
 
 <!-- Footer -->
 <div class="my-5">
-    <footer class="text-center text-lg-start text-white" style="background-color: #130f40;">
-        <div class="container p-4 pb-0">
-            <div class="row mt-3">
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    Nørgaardsvej 30<br/>
-                    2800 Lyngby
-                </div>
+    <section class="">
+        <footer class="text-center text-white" style="background-color: #130f40;">
+            <div class="container p-4 pb-0">
+                <section class="verticalSpans">
+                    <div>
+                        <p>
+                            Nørgaardsvej 30<br/>
+                            2800 Lyngby
+                        </p>
+                        <p>
+                            <jsp:invoke fragment="footer"/>
+                        </p>
+                        <p>
+                            Datamatikeruddannelsen<br/>
+                            2. semester forår 2022
+                        </p>
+                    </div>
+                </section>
             </div>
-            <div class="row mt-3">
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <jsp:invoke fragment="footer"/>
-                </div>
+            <div class="text-center p-3" style="background-color: rgba(0,0,0,0.2)">
+                &copy; 2022 Cphbusiness
             </div>
-            <div class="row mt-3">
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    Datamatikeruddannelsen<br/>
-                    2. semester forår 2022
-                </div>
-            </div>
-        </div>
-        <div class="text-center p-3" style="background-color: rgba(0,0,0,0.2)">
-            &copy; 2022 Cphbusiness
-        </div>
-    </footer>
+        </footer>
+    </section>
 </div>
 
 <!-- Bootstrap Bundle with Popper -->
