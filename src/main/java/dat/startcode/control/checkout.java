@@ -2,6 +2,7 @@ package dat.startcode.control;
 
 import dat.startcode.model.config.ApplicationStart;
 import dat.startcode.model.dtos.CupcakeDTO;
+import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 import dat.startcode.model.persistence.ConnectionPool;
 import dat.startcode.model.persistence.CupcakeMapper;
@@ -36,7 +37,6 @@ public class checkout extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 
         int refresh = Integer.parseInt(request.getParameter("refresh"));
         int total_price = 0;
@@ -114,7 +114,7 @@ public class checkout extends HttpServlet {
                 // Send to checkout page
                 if (refresh == 103) {
 
-                    int orderID = cupcakeMapper.getOrderId();
+                    int orderID = (int) session.getAttribute("orderId");
 
 
                     for (CupcakeDTO cartCupcake : cartCupcakes) {
