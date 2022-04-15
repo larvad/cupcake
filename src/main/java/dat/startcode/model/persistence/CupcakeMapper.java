@@ -2,6 +2,7 @@ package dat.startcode.model.persistence;
 
 import dat.startcode.model.dtos.BotDTO;
 import dat.startcode.model.dtos.TopDTO;
+import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 
 import java.sql.*;
@@ -101,27 +102,27 @@ public class CupcakeMapper implements ICupcakeMapper {
     }
 
     @Override
-    public int getOrderId() throws DatabaseException {
+    public int createOrder(User user, int totalPrice) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
 
         int orderId = 0;
 
-        String sql = "SELECT max(order_id) FROM cupcake.order";
+        String sql = "INSERT INTO `order`(user_id, price_total) VALUES (?,?)";
 
         try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ResultSet rs = ps.executeQuery();
-                while (rs.next()) {
-                    orderId = rs.getInt("max(order_id)");
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setInt(1, user.getId());
+                ps.setInt(2, totalPrice);
+                ps.executeUpdate();
+                ResultSet rs = ps.getGeneratedKeys();
+                if (rs.next()) {
+                    orderId = rs.getInt(1);
                 }
-
             }
-
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return orderId+1;
+        return orderId;
     }
 
     @Override
