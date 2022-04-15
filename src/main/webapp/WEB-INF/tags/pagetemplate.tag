@@ -147,6 +147,6 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 <script src="${pageContext.request.contextPath}/scripts/changeCupcakeImage.js" type="text/javascript"></script>
-
+<script src="${pageContext.request.contextPath}/scripts/changeAdminTab.js" type="text/javascript"></script>
 </body>
 </html>
