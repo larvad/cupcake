@@ -13,7 +13,7 @@
 }
 .checkout-bodyHeader {
 
-    padding-top: 30px;
+    padding-top: 50px;
     margin-bottom: 20px;
     color: white;
 
@@ -78,7 +78,11 @@
     padding-top: -500px;
 }
 .tilbage {
-    color: blue !important;
+    padding-left: 120px;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: "Arial Black", Gadget, sans-serif;
+    color: #C471EDFF !important;
 }
 
 .row .total .total-sub1 {
@@ -104,9 +108,7 @@
 }
 
 .row5 .btn1 {
-    padding-left: 500px;
-    padding-bottom: 100px;
-    padding-top: 60px;
+
 
 }
 .Subtotal1 {
@@ -142,5 +144,23 @@
     font-family: "Arial Black", Gadget, sans-serif;
     font-size: 40px;
     color: #ffffff;
+}
+.btn-checkout {
+    width: 350px;
+    font-weight: 200;
+    background-color: green !important;
+    border-color: green !important;
+}
+.btn-cancelOrder {
+
+    width: 130px;
+    font-weight: 100;
+    font-size: 10px !important;
+    background-color: #F64F59FF !important;
+    border-color: #F64F59FF !important;
+}
+.btn-back {
+    background-color: #c471ed !important;
+    border-color: #c471ed !important;
 
 }

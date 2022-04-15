@@ -12,6 +12,24 @@
 .nav-custom {
     background-color: #130f40;
 }
+.navbar-nav a {
+
+    color: white;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 14px;
+    text-align: center;
+}
+
+.navbar-nav {
+    width: 80% !important;
+    justify-content: space-between !important;
+    padding-top: 25px !important;
+
+}
+
+.nav-item .button {
+
+}
 
 table {
     border-collapse: collapse;

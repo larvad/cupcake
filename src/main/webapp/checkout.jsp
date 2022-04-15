@@ -21,14 +21,14 @@
             </div>
             <div class="checkout-body">
                 <div class="checkout-pageHeader checkout-bodyHeader">
-                    <h1>Your Cart</h1>
+                    <h1>Din kurv</h1>
                 </div>
-                <div class="row total-header-section">
+                <div class="row total-header-section" style="margin-bottom: 20px">
                     <div class="col-lg-6 col-sm-6 col-6">
                         <form method="post">
                             <p>
-                                <button formaction="orderReturn" class="buttonClear tilbage">
-                                    <- Tilbage til cupcake designer
+                                <button formaction="orderReturn" class="btn btn-primary btn-shop btn-cancelOrder btn-back" style="margin-left: 150px; margin-top: -100px">
+                                    < Tilbage
                                 </button>
                             </p>
                         </form>
@@ -39,8 +39,6 @@
                     <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
                         <form method="post">
                             <p>
-                                <button formaction="checkout" class="buttonClear" name="refresh" value="102">Remove all
-                                </button>
                             </p>
                         </form>
                     </div>
@@ -112,23 +110,18 @@
                     </div>
                 </div>
                 </form>
-                <div class="row5">
-                    <form method="post">
-                        <div class="btn1">
-                            <button class="btn-primary" formaction="checkout"
-                                    name="refresh" value="103">
+                <form method="post">
+                <div class="row">
+                    <div class="box1" style="margin-bottom: 50px">
+                            <span style="margin-left: -210px; padding-right: 75px" ><button class="btn btn-primary btn-shop btn-cancelOrder" formaction="CartRefresh" name="refresh" value="102">
                                 Cancel Order
-                            </button>
-                            <button class="btn-primary" formaction="checkout"
-                                    name="refresh" value="103">
-                                Checkout
-                            </button>
-                        </div>
-                        <div class="btn2">
-
-                        </div>
-                    </form>
+                            </button></span>
+                        <button class="btn btn-primary btn-shop btn-checkout" formaction="checkout" name="refresh" value="103">
+                            Bekræft bestilling
+                        </button>
+                    </div>
                 </div>
+                </form>
             </div>
 
         </c:if>
