@@ -16,7 +16,7 @@ public interface ICupcakeMapper {
     public BotDTO findCupcakeBot(int id) throws DatabaseException;
 //    public int getOrderId() throws DatabaseException;
     public int createOrder(User user, int totalPrice) throws DatabaseException;
-    public void setCupcakeLines(int orderID, int quantity, int top_id, int bot_id) throws DatabaseException;
+    public void setCupcakeLines(int orderID, int quantity, int top_id, int bot_id, int line_price) throws DatabaseException;
 
     }
 

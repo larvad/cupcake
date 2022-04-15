@@ -39,6 +39,7 @@ public class checkout extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         int refresh = Integer.parseInt(request.getParameter("refresh"));
+        User user = (User) request.getSession().getAttribute("user");
         int total_price = 0;
 
         try {
@@ -114,14 +115,19 @@ public class checkout extends HttpServlet {
                 // Send to checkout page
                 if (refresh == 103) {
 
-                    int orderID = (int) session.getAttribute("orderId");
+                    for (CupcakeDTO cartCupcake : cartCupcakes) {
+                        total_price = total_price + cartCupcake.getTotalPrice();
+                    }
+                    session.setAttribute("totalPrice", total_price);
+                    int orderId = cupcakeMapper.createOrder(user, total_price);
 
 
                     for (CupcakeDTO cartCupcake : cartCupcakes) {
 
-                    cupcakeMapper.setCupcakeLines(orderID, cartCupcake.getQuantity(), cartCupcake.getTopDTO().getId(), cartCupcake.getBotDTO().getId());
+                    cupcakeMapper.setCupcakeLines(orderId, cartCupcake.getQuantity(), cartCupcake.getTopDTO().getId(), cartCupcake.getBotDTO().getId(), cartCupcake.getTotalPrice());
                     }
 
+                    session.setAttribute("orderId", orderId);
                     request.getRequestDispatcher("checkoutComplete.jsp").forward(request, response);
 
                 }

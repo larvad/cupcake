@@ -126,14 +126,13 @@ public class CupcakeMapper implements ICupcakeMapper {
     }
 
     @Override
-    public void setCupcakeLines(int orderID, int quantity, int top_id, int bot_id) throws DatabaseException {
+    public void setCupcakeLines(int orderID, int quantity, int top_id, int bot_id, int line_price) throws DatabaseException {
 
-        String hello = "";
         Logger.getLogger("web").log(Level.INFO, "");
         boolean result = false;
 
 
-        String sql = "INSERT INTO order_line (order_id, quantity, top_id, bottom_id) values (? , ? , ?, ?)";
+        String sql = "INSERT INTO order_line (order_id, quantity, top_id, bottom_id, line_price) values (? , ? , ?, ?, ?)";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -141,6 +140,7 @@ public class CupcakeMapper implements ICupcakeMapper {
                 ps.setInt(2, quantity);
                 ps.setInt(3, top_id);
                 ps.setInt(4, bot_id);
+                ps.setInt(5, line_price);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
                     result = true;
