@@ -131,6 +131,7 @@ public class CupcakeMapper implements ICupcakeMapper {
         Logger.getLogger("web").log(Level.INFO, "");
         boolean result = false;
 
+
         String sql = "INSERT INTO order_line (order_id, quantity, top_id, bottom_id) values (? , ? , ?, ?)";
 
         try (Connection connection = connectionPool.getConnection()) {
@@ -151,6 +152,7 @@ public class CupcakeMapper implements ICupcakeMapper {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
     }
 
     @Override

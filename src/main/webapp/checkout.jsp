@@ -83,7 +83,7 @@
                     </div>
                     <div>
                         <form method="post">
-                            <button class="btn btn-primary btn-block" formaction="order">
+                            <button class="btn btn-primary btn-block" formaction="checkout" name="refresh" value="103">
                                 Checkout
                             </button>
                         </form>
