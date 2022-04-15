@@ -10,7 +10,7 @@
     overflow: visible;
 }
 .nav-custom {
-    background-color: #130f40
+    background-color: #130f40;
 }
 
 table {
@@ -190,6 +190,7 @@ hr{
     box-sizing: border-box;
 
 }
+
 
 .btn-selector {
     font-family: "Arial Black", Gadget, sans-serif;

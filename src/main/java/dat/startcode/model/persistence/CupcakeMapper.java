@@ -101,6 +101,7 @@ public class CupcakeMapper implements ICupcakeMapper {
         return botDTO;
     }
 
+
     @Override
     public int createOrder(User user, int totalPrice) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
