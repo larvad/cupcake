@@ -62,6 +62,7 @@ class UserMapperTest
     {
         User actualUser = userMapper.login("user","1234");
         User expectedUser = new User("user","1234", "u@u.dk", "user", 0);
+        expectedUser.setId(actualUser.getId());
         assertEquals(expectedUser, actualUser);
     }
 
@@ -83,9 +84,17 @@ class UserMapperTest
         User newUser = userMapper.createUser("jill", "1234", "j@j.dk", false);
         User logInUser = userMapper.login("jill","1234");
         User expectedUser = new User("jill", "1234", "j@j.dk", "user", 0);
+        expectedUser.setId(newUser.getId());
         assertEquals(expectedUser, newUser);
         assertEquals(expectedUser, logInUser);
+    }
 
+    @Test
+    void updateUserBalance() throws DatabaseException {
+        User user = userMapper.login("admin", "1234");
+        int actualBalance = userMapper.updateUserBalance(user, 10);
+        int expectedBalance = 10;
+        assertEquals(actualBalance, expectedBalance);
     }
 
     @Test

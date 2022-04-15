@@ -40,6 +40,7 @@ public class UserMapper implements IUserMapper
                     String email = rs.getString("email");
                     int balance = rs.getInt("balance");
                     user = new User(username, password, email, role, balance);
+                    user.setId(id); // this is where the magic happens
                 } else
                 {
                     throw new DatabaseException("Wrong username or password");
@@ -81,6 +82,7 @@ public class UserMapper implements IUserMapper
         {
             throw new DatabaseException(ex, "Could not insert username into database");
         }
+        user.setId(this); // this is where the magic happens
         return user;
     }
 
@@ -89,17 +91,17 @@ public class UserMapper implements IUserMapper
         int result = 0;
         String sql = "UPDATE user " +
                      "SET balance = balance + ? " +
-                     "WHERE email = ?";
+                     "WHERE user_id = ?";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, amountToAdd);
-                ps.setString(2, user.getEmail());
+                ps.setInt(2, user.getId());
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
-                    String sql2 = "SELECT balance FROM user WHERE email = ?";
+                    String sql2 = "SELECT balance FROM user WHERE user_id = ?";
                     try (PreparedStatement ps2 = connection.prepareStatement(sql2)) {
-                        ps2.setString(1, user.getEmail());
+                        ps2.setInt(1, user.getId());
                         ResultSet rs = ps2.executeQuery();
                         if (rs.next()) {
                             result = rs.getInt(1);
@@ -111,5 +113,25 @@ public class UserMapper implements IUserMapper
             throw new DatabaseException("User doesn't exist");
         }
         return result;
+    }
+
+    @Override
+    public int getUserId(User user) { // is only called on user object creation
+        int userId = 0;               // so the user actually gets their id :)
+        String sql = "SELECT user_id FROM user " +
+                     "WHERE email = ?"; // uses email to get user_id, as it should be unique
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setString(1, user.getEmail());
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    userId = rs.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userId;
     }
 }
