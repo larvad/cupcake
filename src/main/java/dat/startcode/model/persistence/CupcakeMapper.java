@@ -1,14 +1,10 @@
 package dat.startcode.model.persistence;
 
 import dat.startcode.model.dtos.BotDTO;
-import dat.startcode.model.dtos.CupcakeDTO;
 import dat.startcode.model.dtos.TopDTO;
 import dat.startcode.model.exceptions.DatabaseException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -128,7 +124,36 @@ public class CupcakeMapper implements ICupcakeMapper {
         return orderId+1;
     }
 
-        @Override
+    @Override
+    public void setCupcakeLines(int orderID, int quantity, int top_id, int bot_id) throws DatabaseException {
+
+        String hello = "";
+        Logger.getLogger("web").log(Level.INFO, "");
+        boolean result = false;
+
+        String sql = "INSERT INTO order_line (order_id, quantity, top_id, bottom_id) values (? , ? , ?, ?)";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderID);
+                ps.setInt(2, quantity);
+                ps.setInt(3, top_id);
+                ps.setInt(4, bot_id);
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1) {
+                    result = true;
+                }
+                else {
+                    throw new DatabaseException("kunne ikke oprettes i databasen");
+                }
+
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    @Override
     public TopDTO findCupcakeTop(int id) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
 

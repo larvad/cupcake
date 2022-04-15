@@ -53,9 +53,9 @@
 }
 
 .row2 {
-    padding-right: 180px;
+    padding-right: 200px;
 }
-.row2 .count {
+.row2 .count1 {
     color: #b6a9a9;
 }
 .row2 .count2 {
@@ -67,7 +67,7 @@
     margin-top: -10px;
 }
 .row2 .count {
-    padding-left: 65px;
+    padding-left: 20px;
 
 
 }

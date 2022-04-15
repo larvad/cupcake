@@ -6,6 +6,7 @@
 <t:pagetemplate>
     <jsp:attribute name="header">
 
+
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -54,7 +55,7 @@
                             </div>
                             <div class="row2 text-center">
                                 <span class="price text-info">Pris: ${(c.botDTO.bot_price + c.topDTO.top_price)*c.quantity} DK</span>
-                                <span class="count"> Antal: <span class="count2">${c.quantity}</span></span>
+                                <span class="count"><span class="count1"> Antal: <span class="count2">${c.quantity}</span></span></span>
                             </div>
                             <div class="row3 ">
                                 <form method="post">
@@ -82,7 +83,7 @@
                     </div>
                     <div>
                         <form method="post">
-                            <button class="btn btn-primary btn-block" formaction="checkout" name="refresh" value="103">
+                            <button class="btn btn-primary btn-block" formaction="order">
                                 Checkout
                             </button>
                         </form>

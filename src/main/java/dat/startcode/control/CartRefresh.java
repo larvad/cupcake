@@ -68,18 +68,19 @@ public class CartRefresh extends HttpServlet {
                 // Hvis enkelt cupcake fjernes
 
                 if (refresh == 101) {
-                    int cupcakeToRemove = Integer.parseInt(request.getParameter("cupcakeToRemove"));
-                    CupcakeDTO tempCupcakeDTO = null;
-                    for (CupcakeDTO cartCupcake : cartCupcakes) {
-                        if (cartCupcake.getCupcakeID() == cupcakeToRemove) {
-                            tempCupcakeDTO = cartCupcake;
-                        }
-
-                    }
-                    cartCupcakes.remove(tempCupcakeDTO);
-
-                    // Setting new id of cupcakes
                     if (cartCupcakes.size() != 0) {
+                        int cupcakeToRemove = Integer.parseInt(request.getParameter("cupcakeToRemove"));
+                        CupcakeDTO tempCupcakeDTO = null;
+                        for (CupcakeDTO cartCupcake : cartCupcakes) {
+                            if (cartCupcake.getCupcakeID() == cupcakeToRemove) {
+                                tempCupcakeDTO = cartCupcake;
+                            }
+
+                        }
+                        cartCupcakes.remove(tempCupcakeDTO);
+
+                        // Setting new id of cupcakes
+
                         for (CupcakeDTO cartCupcake : cartCupcakes) {
                             int i = cartCupcakes.indexOf(cartCupcake);
                             cartCupcake.setCupcakeID(i + 1);
