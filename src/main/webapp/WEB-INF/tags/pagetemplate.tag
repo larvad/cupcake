@@ -27,7 +27,7 @@
 <header class="bg-info">
     <nav class="navbar navbar-expand-lg nav-custom">
         <div class="container">
-            <a class="navbar-brand" href="index.jsp">
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">
                 <img src="${pageContext.request.contextPath}/images/olskerLogo2.jpg" width="100px;" class="img-fluid"/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -43,7 +43,7 @@
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">${sessionScope.email}</a>
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-12 col-sm-12 col-12 main-section">
@@ -121,25 +121,31 @@
 </div>
 
 <!-- Footer -->
-<div class="container mt-3" >
-    <hr/>
-    <div class="row mt-4">
-        <div class="col">
-            Nørgaardsvej 30<br/>
-            2800 Lyngby
+<div class="my-5">
+    <footer class="text-center text-lg-start text-white" style="background-color: #130f40;">
+        <div class="container p-4 pb-0">
+            <div class="row mt-3">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    Nørgaardsvej 30<br/>
+                    2800 Lyngby
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <jsp:invoke fragment="footer"/>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    Datamatikeruddannelsen<br/>
+                    2. semester forår 2022
+                </div>
+            </div>
         </div>
-        <div class="col">
-            <jsp:invoke fragment="footer"/><br/>
-            <p>&copy; 2022 Cphbusiness</p>
+        <div class="text-center p-3" style="background-color: rgba(0,0,0,0.2)">
+            &copy; 2022 Cphbusiness
         </div>
-        <div class="col">
-            Datamatikeruddannelsen<br/>
-            2. semester forår 2022
-        </div>
-    </div>
-
-</div>
-
+    </footer>
 </div>
 
 <!-- Bootstrap Bundle with Popper -->
@@ -148,5 +154,4 @@
         crossorigin="anonymous"></script>
 <script src="${pageContext.request.contextPath}/scripts/changeCupcakeImage.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/scripts/changeAdminTab.js" type="text/javascript"></script>
-</body>
 </html>
