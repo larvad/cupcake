@@ -307,7 +307,13 @@ hr{
     margin-top: 20px;
 }
 
-
+.verticalSpans {
+    display: -moz-inline-block;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1em;
+}
 
 
 
