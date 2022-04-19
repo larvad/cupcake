@@ -25,6 +25,14 @@ public class User
         this.balance = balance;
     }
 
+    public User(String username, String password, String email, String role) {
+        this.id = 0;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+    }
+
     @Override
     public String toString()
     {
