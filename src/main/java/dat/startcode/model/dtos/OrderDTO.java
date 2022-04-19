@@ -1,16 +1,16 @@
 package dat.startcode.model.dtos;
 
+import java.util.List;
+
 public class OrderDTO {
     private int orderID;
-    private int quantity;
-    private int top_id;
-    private int bot_id;
+    private int totalPrice;
+    List<LineDTO> cupcakeLines;
 
-    public OrderDTO(int orderID, int quantity, int top_id, int bot_id) {
+    public OrderDTO(int orderID, int totalPrice, List<LineDTO> cupcakeLines) {
         this.orderID = orderID;
-        this.quantity = quantity;
-        this.top_id = top_id;
-        this.bot_id = bot_id;
+        this.totalPrice = totalPrice;
+        this.cupcakeLines = cupcakeLines;
     }
 
     public int getOrderID() {
@@ -21,27 +21,19 @@ public class OrderDTO {
         this.orderID = orderID;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
-    public int getTop_id() {
-        return top_id;
+    public List<LineDTO> getCupcakeLines() {
+        return cupcakeLines;
     }
 
-    public void setTop_id(int top_id) {
-        this.top_id = top_id;
-    }
-
-    public int getBot_id() {
-        return bot_id;
-    }
-
-    public void setBot_id(int bot_id) {
-        this.bot_id = bot_id;
+    public void setCupcakeLines(List<LineDTO> cupcakeLines) {
+        this.cupcakeLines = cupcakeLines;
     }
 }
