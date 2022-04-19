@@ -40,7 +40,6 @@ public class myOrders extends HttpServlet {
         if (session != null) {
 
 
-            List<LineDTO> cupcakeLines = cupcakeMapper.getUserOrders(user);
 
         }
 
