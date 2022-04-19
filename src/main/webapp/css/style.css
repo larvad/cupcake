@@ -1,4 +1,17 @@
 /* CSS stylesheet  for application */
+.body{
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+.nav-custom {
+    background-color: #130f40
+}
 
 table {
     border-collapse: collapse;
@@ -10,6 +23,274 @@ th, td {
     border: 1px solid silver;
     padding:15px;
 }
+.Cart-Container{
+    width: 70%;
+    height: 85%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 25px 40px #1687d933;
+}
+.Header{
+    margin: auto;
+    width: 90%;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Heading{
+    font-size: 20px;
+    font-family: ‘Open Sans’, serif;
+    font-weight: 700;
+    color: #2F3841;
+}
+.Action{
+    font-size: 14px;
+    font-family: ‘Open Sans’, serif;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    background-color: blue;
+    border-radius:50px;
+
+}.Action2{
+     font-size: 14px;
+     font-family: ‘Open Sans’, serif;
+     font-weight: 600;
+     color: white;
+     cursor: pointer;
+     background-color: red;
+ }
+
+.imageEdit {
+    position: center;
+}
+.Cart-Items{
+    margin: auto;
+    width: 90%;
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.image-box{
+    width: 15%;
+    text-align: center;
+}
+.image-box2{
+    margin-top: 0px;
+}
+.about{
+    height: 40px;
+}
+.title{
+    padding-top: 5px;
+    line-height: 10px;
+    font-size: 25px;
+    font-family: ‘Open Sans’, serif;
+    font-weight: 800;
+    color: #202020;
+}
+.subtitle{
+    line-height: 10px;
+    font-size: 15px;
+    font-family: ‘Open Sans’, serif;
+    font-weight: 600;
+    color: #909090;
+}
+.counter{
+    width: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.count{
+    font-size: 20px;
+    font-family: ‘Open Sans’, serif;
+    font-weight: 900;
+    color: #202020;
+}
+.prices{
+    height: 100%;
+    text-align: right;
+}
+.amount{
+    padding-top: 20px;
+    font-size: 26px;
+    font-family: ‘Open Sans’, serif;
+    font-weight: 800;
+    color: #202020;
+}
+.save{
+    padding-top: 5px;
+    font-size: 14px;
+    font-family: ‘Open Sans’, serif;
+    font-weight: 600;
+    color: #1687d9;
+    cursor: pointer;
+}
+.remove{
+    padding-top: 5px;
+    font-size: 14px;
+    font-family: ‘Open Sans’, serif;
+    font-weight: 600;
+    color: #da24c2;
+    cursor: pointer;
+}
+hr{
+    width: 66%;
+    float: right;
+    margin-right: 5%;
+}
+.checkout{
+    float: right;
+    margin-right: 5%;
+    width: 28%;
+}
+.total{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.Subtotal{
+    font-size: 22px;
+    font-family: ‘Open Sans’;
+    font-weight: 700;
+    color: #ffffff;
+}
+.items{
+    font-size: 16px;
+    font-family: ‘Open Sans’;
+    font-weight: 500;
+    opacity: 0.7;
+    color: #ffffff;
+    line-height: 10px;
+}
+.total-amount{
+    font-size: 36px;
+    font-family: ‘Open Sans’;
+    font-weight: 900;
+    color: #ffffff;
+}
+.button{
+    margin-top: 5px;
+    width: 100%;
+    height: 40px;
+    border: none;
+    background: linear-gradient(to bottom right, #B8D7FF, #8EB7EB);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: ‘Open Sans’;
+    font-weight: 600;
+    color: #202020;
+}
+.drop{
+    box-sizing: border-box;
+
+}
+
+.btn-selector {
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 10px;
+    padding: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #FFF;
+    width: 200px;
+    box-shadow: 0 1px 3px rgb(19, 15, 64), 0 1px 2px rgb(19, 15, 64);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    cursor: pointer;
+    background-color: #130f40;
+    display: inline-block;
+    border-radius: 25px;
+    border-color: #130f40;
+
+}
+
+.btn-selectorGradient {
+    background-image: linear-gradient(to right, #c471ed 0%, #f64f59 100%);
+    border-color: #130f40;
+
+}
+
+
+.drop img{
+    height: 100%;
+    margin: auto;
+    display: block;
+}
+
+.drop select {
+    margin-top: 25px;
+    margin-left: 45px;
+    display: block;
+    text-align: center;
+}
+
+.boxesLeft {
+    width: 50%;
+    height: 150px;
+    padding-left: 150px;
+    float: left;
+    background-color: #ffffff;
+}
+.boxesRight {
+    width: 50%;
+    height: 150px;
+    float: right;
+    background-color: rgb(19, 15, 64);
+}
+.boxesRight2 {
+    width: 25%;
+    height: 150px;
+    right: 25%;
+    float: right;
+    background-color: rgb(19, 15, 64);
+
+}
+.boxesRight3 {
+
+    width: 25%;
+    height: 150px;
+    right: 50%;
+    float: right;
+    background-color: rgb(19, 15, 64);
+}
+
+.boxBottom {
+    height: 50px;
+    background-color: transparent;
+    padding-left: 0 !important;
+    width: 100% !important;
+    margin-bottom: 50px;
+}
+.header {
+    margin-top: 50px;
+    text-align: center;
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 80px;
+}
+
+.title {
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
+}
+.drop .title {
+    margin-left: 60px;
+    margin-top: 20px;
+}
+
+
+
+
 
 
 
