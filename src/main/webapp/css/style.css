@@ -10,7 +10,25 @@
     overflow: visible;
 }
 .nav-custom {
-    background-color: #130f40
+    background-color: #130f40;
+}
+.navbar-nav a {
+
+    color: white;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 14px;
+    text-align: center;
+}
+
+.navbar-nav {
+    width: 80% !important;
+    justify-content: space-between !important;
+    padding-top: 25px !important;
+
+}
+
+.nav-item .button {
+
 }
 
 table {
@@ -191,6 +209,7 @@ hr{
 
 }
 
+
 .btn-selector {
     font-family: "Arial Black", Gadget, sans-serif;
     font-size: 10px;
@@ -288,7 +307,13 @@ hr{
     margin-top: 20px;
 }
 
-
+.verticalSpans {
+    display: -moz-inline-block;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1em;
+}
 
 
 

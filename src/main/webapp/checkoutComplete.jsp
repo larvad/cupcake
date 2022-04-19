@@ -15,7 +15,10 @@
     <jsp:body>
         <c:if test="${sessionScope.user != null}">
 
-            <h1>Order complete</h1>
+            <h1>Tak for din bestilling! - Dit ordre ID er #${sessionScope.orderId} </h1>
+            <h2>Du sendes automatisk tilbage til forsiden</h2>
+            <meta http-equiv = "refresh" content = "5; url = index.jsp"/>
+
 
 
         </c:if>

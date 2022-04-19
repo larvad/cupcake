@@ -72,6 +72,7 @@ public class Login extends HttpServlet
             session.setAttribute("topping", TopDTOList);
             session.setAttribute("bottom", BotDTOList);
             session.setAttribute("user", user); // adding user object to session scope
+            session.setAttribute("email", user.getEmail());
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
         catch (DatabaseException e)

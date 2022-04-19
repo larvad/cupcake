@@ -14,12 +14,13 @@
 }
 .dropdown .dropdown-menu{
     padding:20px;
-    top:30px !important;
+    top:80px !important;
     width:350px !important;
     left:-110px !important;
     background-color: #130f40 !important;
     box-shadow:0px 5px 30px black;
 }
+
 .total-header-section{
     /*border-bottom:1px solid #12c2e9;*/
 }
@@ -51,23 +52,24 @@
 .cart-detail-product p{
     margin:0px;
     color: #ffffff;
-    font-weight:500;
+    font-weight:100;
 }
 .cart-detail .price{
-    font-size:15px;
+    font-size:13px;
     margin-right:10px;
     margin-bottom: 10px;
-    font-weight:500;
+    font-weight:100;
 }
 .cart-subtitle{
     line-height: 15px;
-    font-size: 10px;
+    font-size: 9px;
     opacity: 0.7;
-    font-weight: 600;
+    font-weight: 100;
     color: #ffffff;
 }
 .cart-detail .count{
     color:#C2C2DC;
+    font-size: 13px;
 }
 .checkout{
     border-top:1px solid #d2d2d2;
@@ -81,13 +83,16 @@
 .btn-update {
     background-color: #c471ed !important;
     border-color: #c471ed !important;
+    font-size: 12px !important;
+    font-weight: 100 !important;
 }
 .btn-remove {
     background-color: #f64f59 !important;
     border: #f64f59 !important;
+    font-size: 12px !important;
+    font-weight: 100 !important;
 }
 .btn-shop {
-    margin: 10px;
     font-family: "Arial Black", Gadget, sans-serif;
     font-size: 10px;
     padding: 15px;
@@ -104,14 +109,16 @@
     border-radius: 25px;
     border-color: #130f40;
 }
-.btn-shop:hover {
-    box-shadow: 0 10px 20px rgb(19, 15, 64), 0 6px 6px rgb(19, 15, 64);
-    margin: 8px 10px 12px;
-}
+/*.btn-shop:hover {*/
+/*    box-shadow: 0 10px 20px rgb(19, 15, 64), 0 6px 6px rgb(19, 15, 64);*/
+/*    margin: 8px 10px 12px;*/
+/*}*/
 .btn-shop1 {
     background-image: linear-gradient(to right, #c471ed 0%, #f64f59 100%);
     border-color: #130f40;
-
+}
+.btn-header-edit {
+    width: 200px;
 }
 .btn-shop1:hover {
     background-position: right center;

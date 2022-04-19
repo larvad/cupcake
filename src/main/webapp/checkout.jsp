@@ -21,18 +21,24 @@
             </div>
             <div class="checkout-body">
                 <div class="checkout-pageHeader checkout-bodyHeader">
-                    <h1>Order ID #${sessionScope.orderId}</h1>
+                    <h1>Din kurv</h1>
                 </div>
-                <div class="row total-header-section">
+                <div class="row total-header-section" style="margin-bottom: 20px">
                     <div class="col-lg-6 col-sm-6 col-6">
-                        <i class="fa fa-shopping-cart" aria-hidden="true" style="color: white"></i> <span
-                            class="badge badge-pill badge-danger">${sessionScope.cartCupcakes.size()}</span>
+                        <form method="post">
+                            <p>
+                                <button formaction="orderReturn" class="btn btn-primary btn-shop btn-cancelOrder btn-back" style="margin-left: 150px; margin-top: -100px">
+                                    < Tilbage
+                                </button>
+                            </p>
+                        </form>
+<%--                        <i class="fa fa-shopping-cart" aria-hidden="true" style="color: white"></i> <span--%>
+<%--                            class="badge badge-pill badge-danger">${sessionScope.cartCupcakes.size()}</span>--%>
+
                     </div>
                     <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
                         <form method="post">
                             <p>
-                                <button formaction="checkout" class="buttonClear" name="refresh" value="102">Remove all
-                                </button>
                             </p>
                         </form>
                     </div>
@@ -47,19 +53,22 @@
                                 <img src="images/Bot/bot_${c.botDTO.id}.png">
                             </div>
                         </div>
-<%--                        cart-detail-product--%>
+                            <%--                        cart-detail-product--%>
                         <div class="col-lg-8 col-sm-8 col-8 cart-product">
                             <div class="row1">
                                 <h2>Cupcake design #${c.cupcakeID}</h2>
-                                <p class="cart-subtitle">Med ${c.botDTO.bot_flavor} bund og ${c.topDTO.top_flavor} top</p>
+                                <p class="cart-subtitle">Med ${c.botDTO.bot_flavor} bund og ${c.topDTO.top_flavor}
+                                    top</p>
                             </div>
                             <div class="row2 text-center">
                                 <span class="price text-info">Pris: ${(c.botDTO.bot_price + c.topDTO.top_price)*c.quantity} DK</span>
-                                <span class="count"><span class="count1"> Antal: <span class="count2">${c.quantity}</span></span></span>
+                                <span class="count"><span class="count1"> Antal: <span
+                                        class="count2">${c.quantity}</span></span></span>
                             </div>
                             <div class="row3 ">
                                 <form method="post">
-                                    <input type="number" id="quantityRefresh" name="quantityRefresh" value="${c.quantity}"
+                                    <input type="number" id="quantityRefresh" name="quantityRefresh"
+                                           value="${c.quantity}"
                                            min="1" max="99">
                                     <button class="btn btn-primary btn-update" formaction="checkout" name="refresh"
                                             value="${c.cupcakeID}">Update
@@ -75,23 +84,45 @@
                 </c:forEach>
                 <div class="row">
                     <div class="total">
-                        <div>
-                            <div class="Subtotal">Sub-Total</div>
+                        <div class="total-sub1">
+                            <div class="Subtotal Subtotal1">Pris-Total</div>
                             <div class="items">Items: ${sessionScope.cartCupcakes.size()}</div>
                         </div>
-                        <div class="total-amount">${sessionScope.totalPrice} DK</div>
-                    </div>
-                    <div>
-                        <form method="post">
-                            <button class="btn btn-primary btn-block" formaction="order">
-                                Checkout
-                            </button>
-                        </form>
+                        <div class="total-amount total-amount1">${sessionScope.totalPrice} DK</div>
                     </div>
                 </div>
+                <form>
+                <div class="row">
+                    <p class="choosepay">Vælg betalingsform</p>
+                    <div class="box1">
+                        <img src="${pageContext.request.contextPath}/images/cardpayment5.png" alt="cardpayment" class="img-fluid"/>
+                        <img src="${pageContext.request.contextPath}/images/mobilepay5.png" alt="mobilepay" class="img-fluid">
+                    </div>
+                    <div class="box1">
+                        <span class="input1">
+                        <input type="radio" id="cardpayment" name="payment" value="payment" checked="checked">
+                        <label style="color: white" for="cardpayment">Betalingskort</label>
+                        </span>
+                        <span class="input2">
+                        <input type="radio" id="mobilepay" name="payment" value="payment">
+                        <label style="color: white" for="mobilepay">Mobilepay</label>
+                        </span>
+                    </div>
+                </div>
+                </form>
+                <form method="post">
+                <div class="row">
+                    <div class="box1" style="margin-bottom: 50px">
+                            <span style="margin-left: -210px; padding-right: 75px" ><button class="btn btn-primary btn-shop btn-cancelOrder" formaction="CartRefresh" name="refresh" value="102">
+                                Cancel Order
+                            </button></span>
+                        <button class="btn btn-primary btn-shop btn-checkout" formaction="checkout" name="refresh" value="103">
+                            Bekræft bestilling
+                        </button>
+                    </div>
+                </div>
+                </form>
             </div>
-
-
 
         </c:if>
         <c:if test="${sessionScope.user == null}">
