@@ -100,11 +100,4 @@ class UserMapperTest
         assertEquals(actualBalance, expectedBalance);
     }
 
-    @Test
-    void updateUserBalance() throws DatabaseException {
-        User user = userMapper.login("admin", "1234");
-        int actualBalance = userMapper.updateUserBalance(user, 10);
-        int expectedBalance = 10;
-        assertEquals(actualBalance, expectedBalance);
-    }
 }

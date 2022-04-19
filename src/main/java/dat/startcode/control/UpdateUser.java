@@ -82,7 +82,7 @@ public class UpdateUser extends HttpServlet
 
         if (oldPassword.equals(password)) { //kør hvis det indtastede kodeord matcher det nuværende.
             try {
-                user = userMapper.updateUser(username, newPassword, newEmail, newUsername, isAdmin);
+                user = userMapper.updateUser(email, newPassword, newEmail, newUsername, isAdmin);
                 session = request.getSession();
                 session.setAttribute("user", user);
                 request.getRequestDispatcher("index.jsp").forward(request, response);
