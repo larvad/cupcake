@@ -41,18 +41,17 @@ public class CreateUser extends HttpServlet
         session.setAttribute("user", null); // adding empty user object to session scope
         UserMapper userMapper = new UserMapper(connectionPool);
         User user = null;
+
         String username = request.getParameter("username");
 
         String password = "";
         String password1 = request.getParameter("password1"); // første indtastede password
         String password2 = request.getParameter("password2"); // andet indtastede password
-
         if (!password1.equals(password2))
         {
             request.setAttribute("errormsg", "You failed to confirm your password.");
             request.getRequestDispatcher("profile.jsp").forward(request, response);
         }
-
         if (password1.equals(password2))
         {
             password = request.getParameter("email1");
@@ -61,7 +60,6 @@ public class CreateUser extends HttpServlet
         String email = "";
         String email1 = request.getParameter("email1");
         String email2 = request.getParameter("email2");
-
         if (!email1.equals(email2)) {
             request.setAttribute("errormsg", "you failed to confirm your email.");
             request.getRequestDispatcher("profile.jsp").forward(request, response);

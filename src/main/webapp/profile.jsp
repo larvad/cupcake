@@ -23,12 +23,36 @@
         <p>You are logged in as "${sessionScope.user.username}".</p>
         <br>
 
-        <p>change username: </p>
-        <form action="change username" method="post">
-            <label for="new username">New username: </label>
-            <input type="text" id="new username" name="new username"/>
+        <h1>${requestScope.errormsg}</h1>
 
-            <input type="submit"  value="Change username"/>
+        <p>Update account info: </p>
+        <form action="updateuser" method="post">
+
+            <label for="newUsername">New username: </label>
+            <input type="text" id="newUsername" name="newUsername"/>
+            <br><br>
+
+            <label for="newPassword">New password</label>
+            <input type="password" id="newPassword" name="newPassword">
+            <br><br>
+
+            <label for="confirmNewPassword">Confirm new password</label>
+            <input type="password" id="confirmNewPassword" name="confirmNewPassword">
+            <br><br>
+
+            <label for="newEmail">New email</label>
+            <input type="text" id="newEmail" name="newEmail">
+            <br><br>
+
+            <label for="confirmNewEmail">Confirm email</label>
+            <input type="text" id="confirmNewEmail" name="confirmNewEmail">
+            <br><br><br>
+
+            <label for="oldPassword">Old password</label>
+            <input type="password" id="oldPassword" name="oldPassword">
+
+
+            <input type="submit"  value="Update user"/>
         </form>
     </c:if>
 
