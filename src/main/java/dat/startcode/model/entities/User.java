@@ -13,7 +13,9 @@ public class User
     private String role;
     private int balance;
 
+
     public User(String username, String password, String email, String role, int balance)
+
     {
         this.id = 0; // plz dont actually stay at 0, kthxbye
         this.username = username;
@@ -109,14 +111,18 @@ public class User
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
+
         return (getId() == user.getId()) && getUsername().equals(user.getUsername()) &&
                 getPassword().equals(user.getPassword()) && getRole().equals(user.getRole()) &&
                 getEmail().equals(user.getEmail()) && (getBalance() == user.getBalance());
+
     }
 
     @Override
     public int hashCode()
     {
+
         return Objects.hash(getId(), getUsername(), getPassword(), getEmail(), getRole(), getBalance());
+
     }
 }

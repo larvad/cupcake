@@ -38,9 +38,11 @@ public class UserMapper implements IUserMapper
                     boolean isAdmin = rs.getBoolean("isAdmin");
                     String role = isAdmin ? "admin" : "user";  // yep, "if else" in one line (look up "tertiary operators")
                     String email = rs.getString("email");
+
                     int balance = rs.getInt("balance");
                     user = new User(username, password, email, role, balance);
                     user.setId(id); // this is where the magic happens
+
                 } else
                 {
                     throw new DatabaseException("Wrong username or password");
@@ -71,7 +73,9 @@ public class UserMapper implements IUserMapper
                 if (rowsAffected == 1)
                 {
                     String role = isAdmin ? "admin" : "user";
+
                     user = new User(username, password, email, role, 0);
+
                 } else
                 {
                     throw new DatabaseException("The user with username = " + username + " could not be inserted into the database");
