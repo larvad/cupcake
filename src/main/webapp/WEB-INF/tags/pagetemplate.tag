@@ -36,7 +36,6 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/profile.jsp">Profile</a>
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Designer</a>
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 2</a>
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 3</a>
@@ -115,7 +114,7 @@
                                     <i class="fa fa-user" aria-hidden="true"></i>${sessionScope.email}
                                 </a>
                                 <div class="dropdown-menu" style="width: 200px !important; left: -55px !important;" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Profile</a>
+                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/profile.jsp">Profile</a>
                                     <a class="dropdown-item" href="#">My orders</a>
                                     <a class="dropdown-item" style="color: #F64F59FF" href="${pageContext.request.contextPath}/logout">Logout</a>
                                 </div>
