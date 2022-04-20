@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -36,7 +37,7 @@ class UserMapperTest {
                 stmt.execute("delete from user");
                 // Indsæt et par brugere
                 stmt.execute("insert into user (username, password, email, isAdmin) " +
-                        "values ('user','1234','u@u.dk',false),('admin','1234','a@a.dk',true), ('ben','1234','bz@b.dk',false)");
+                        "values ('user','1234','u@u.dk',false),('admin','1234','a@a.dk',true), ('ben','1234','b@b.dk',false)");
             }
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
@@ -56,7 +57,7 @@ class UserMapperTest {
     @Test
     void login() throws DatabaseException {
 
-        User actualUser = userMapper.login("user", "1234");
+        User actualUser = userMapper.login("u@u.dk", "1234");
         User expectedUser = new User("user", "1234", "u@u.dk", "user", 0);
         expectedUser.setId(actualUser.getId());
         assertEquals(expectedUser, actualUser);
@@ -75,7 +76,7 @@ class UserMapperTest {
     @Test
     void createUser() throws DatabaseException {
         User newUser = userMapper.createUser("jill", "1234", "j@j.dk", false);
-        User logInUser = userMapper.login("jill", "1234");
+        User logInUser = userMapper.login("j@j.dk", "1234");
         User expectedUser = new User("jill", "1234", "j@j.dk", "user", 0);
         expectedUser.setId(newUser.getId());
 
@@ -85,7 +86,7 @@ class UserMapperTest {
 
     @Test
     void updateUserBalance() throws DatabaseException {
-        User user = userMapper.login("admin", "1234");
+        User user = userMapper.login("a@a.dk", "1234");
         int actualBalance = userMapper.updateUserBalance(user, 10);
         int expectedBalance = 10;
         assertEquals(actualBalance, expectedBalance);
