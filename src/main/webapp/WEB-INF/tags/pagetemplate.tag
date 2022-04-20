@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/shoppingCart.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/checkout.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/myOrders.css">
 
     <!-- Bootstrap CSS og JS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"

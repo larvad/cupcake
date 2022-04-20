@@ -1,0 +1,33 @@
+.orderPage {
+
+}
+
+.orderBody {
+
+}
+.orderItem {
+
+}
+
+.cart-detail-img3 img {
+    height: 50px;
+    width: auto;
+    margin-bottom: -10px;
+
+}
+.cart-upper-img3 {
+    margin-top: 0;
+    margin-bottom: -14px;
+}
+.textRow {
+    margin-left: 100px;
+    margin-top: -50px;
+    text-align: left;
+}
+.textRow h2 {
+    font-size: 14px;
+}
+.textRow p {
+
+    font-size: 10px;
+}
