@@ -2,10 +2,10 @@ package dat.startcode.control;
 
 import dat.startcode.model.config.ApplicationStart;
 import dat.startcode.model.dtos.CupcakeDTO;
+import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 import dat.startcode.model.persistence.ConnectionPool;
 import dat.startcode.model.persistence.CupcakeMapper;
-import dat.startcode.model.persistence.OrderMapper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,11 +21,11 @@ import java.util.List;
 public class checkout extends HttpServlet {
     private ConnectionPool connectionPool;
     private CupcakeMapper cupcakeMapper;
-    private OrderMapper orderMapper;
+
     @Override
     public void init() throws ServletException {
         this.connectionPool = ApplicationStart.getConnectionPool();
-        orderMapper = new OrderMapper(connectionPool);
+        cupcakeMapper = new CupcakeMapper(connectionPool);
 
     }
 
@@ -38,8 +38,8 @@ public class checkout extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
         int refresh = Integer.parseInt(request.getParameter("refresh"));
+        User user = (User) request.getSession().getAttribute("user");
         int total_price = 0;
 
         try {
@@ -115,13 +115,29 @@ public class checkout extends HttpServlet {
                 // Send to checkout page
                 if (refresh == 103) {
 
+                    for (CupcakeDTO cartCupcake : cartCupcakes) {
+                        total_price = total_price + cartCupcake.getTotalPrice();
+                    }
+                    session.setAttribute("totalPrice", total_price);
+                    int orderId = cupcakeMapper.createOrder(user, total_price);
+
+
+                    for (CupcakeDTO cartCupcake : cartCupcakes) {
+
+                    cupcakeMapper.setCupcakeLines(orderId, cartCupcake.getQuantity(), cartCupcake.getTopDTO().getId(), cartCupcake.getBotDTO().getId(), cartCupcake.getTotalPrice());
+                    }
+
+                    cartCupcakes = new ArrayList<>();
+                    session.setAttribute("cartCupcakes", cartCupcakes);
+                    session.setAttribute("orderId", orderId);
+                    request.getRequestDispatcher("checkoutComplete.jsp").forward(request, response);
 
                 }
 
 
             }
 
-        } catch (IOException e) {
+        } catch (IOException | DatabaseException e) {
             e.printStackTrace();
         }
     }

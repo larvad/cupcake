@@ -17,19 +17,19 @@ public class UserMapper implements IUserMapper
     }
 
     @Override
-    public User login(String username, String password) throws DatabaseException
+    public User login(String email, String password) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
 
         User user = null;
 
-        String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+        String sql = "SELECT * FROM user WHERE email = ? AND password = ?";
 
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
-                ps.setString(1, username);
+                ps.setString(1, email);
                 ps.setString(2, password);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next())
@@ -37,10 +37,12 @@ public class UserMapper implements IUserMapper
                     int id = rs.getInt("user_id");
                     boolean isAdmin = rs.getBoolean("isAdmin");
                     String role = isAdmin ? "admin" : "user";  // yep, "if else" in one line (look up "tertiary operators")
-                    String email = rs.getString("email");
+                    String username = rs.getString("username");
+
                     int balance = rs.getInt("balance");
                     user = new User(username, password, email, role, balance);
                     user.setId(id); // this is where the magic happens
+
                 } else
                 {
                     throw new DatabaseException("Wrong username or password");
@@ -71,7 +73,9 @@ public class UserMapper implements IUserMapper
                 if (rowsAffected == 1)
                 {
                     String role = isAdmin ? "admin" : "user";
+
                     user = new User(username, password, email, role, 0);
+
                 } else
                 {
                     throw new DatabaseException("The user with username = " + username + " could not be inserted into the database");
@@ -87,6 +91,42 @@ public class UserMapper implements IUserMapper
     }
 
     @Override
+    public User updateUser(String currentEmail, String password, String email, String newUsername, boolean isAdmin) throws DatabaseException
+    {
+        Logger.getLogger("web").log(Level.INFO, "");
+        User user;
+
+        String sql = "UPDATE `cupcake`.`user` SET `username` = ?, `password` = ?, `email` = ?, `isAdmin` = ? WHERE (`email` = ?);";
+
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setString(1, newUsername);
+                ps.setString(2, password);
+                ps.setString(3, email);
+                ps.setBoolean(4, isAdmin);
+                ps.setString(5, currentEmail);
+
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1)
+                {
+                    String role = isAdmin ? "admin" : "user";
+                    user = new User(currentEmail, password, email, role);
+                    user.setId(this);
+                } else
+                {
+                    throw new DatabaseException("The user with email = " + currentEmail + " could not be inserted into the database");
+                }
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new DatabaseException(ex, "Could not insert username into database");
+        }
+        return user;
+    }
+
     public int updateUserBalance(User user, int amountToAdd) throws DatabaseException {
         int result = 0;
         String sql = "UPDATE user " +
