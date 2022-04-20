@@ -1,6 +1,7 @@
 package dat.startcode.model.persistence;
 
 import dat.startcode.model.dtos.BotDTO;
+import dat.startcode.model.dtos.LineDTO;
 import dat.startcode.model.dtos.TopDTO;
 import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
@@ -182,5 +183,31 @@ public class CupcakeMapper implements ICupcakeMapper {
         return topDTO;
     }
 
+    public List<LineDTO> getOrderLines (User user) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
 
+        int userId = user.getId();
+        List<LineDTO> lineDTOS = new ArrayList<>();
+        String sql = "SELECT * FROM cupcake.order INNER JOIN order_line USING (order_id) WHERE user_id = ?";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, userId);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+
+                    int orderId = rs.getInt("order_id");
+                    int totalPrice = rs.getInt("price_total");
+                    int quantity = rs.getInt("quantity");
+                    int topId = rs.getInt("top_id");
+                    int botId = rs.getInt("bottom_id");
+
+                    lineDTOS.add(new LineDTO(orderId, totalPrice, quantity, topId, botId));
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return lineDTOS;
+    }
 }

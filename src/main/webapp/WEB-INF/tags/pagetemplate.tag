@@ -36,10 +36,9 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/profile.jsp">Profile</a>
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Designer</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 2</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 3</a>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/myOrders">Mine køb</a>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/profile.jsp">Profile</a>
                     <c:if test="${sessionScope.user == null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                     </c:if>
@@ -110,13 +109,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <li class="dropdown well" style="padding-left: -200px !important; padding-top: -100px !important; margin-right: -100px; margin-left: -120px;" >
+                            <li class="dropdown well" style="padding-left: -200px !important; padding-top: -100px !important; margin-right: -70px; margin-left: -120px;" >
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-user" aria-hidden="true"></i>${sessionScope.email}
                                 </a>
                                 <div class="dropdown-menu" style="width: 200px !important; left: -55px !important;" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Profile</a>
-                                    <a class="dropdown-item" href="#">My orders</a>
+                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/profile.jsp">Profile</a>
+                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/myOrders">Mine køb</a>
                                     <a class="dropdown-item" style="color: #F64F59FF" href="${pageContext.request.contextPath}/logout">Logout</a>
                                 </div>
                             </li>

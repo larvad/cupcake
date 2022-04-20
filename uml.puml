@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+Title Cupcake
+|Kunde|
+start
+:Ankommer til website;
+
+if (Bruger oprettet?) then (nej)
+  :Opret bruger;
+  :Automatisk Login;
+
+
+else (ja)
+|Website|
+repeat :Udfyld login;
+  repeat while (Login sandt?) is (nej)
+  -> ja;
+|Kunde|
+endif;
+repeat :Design cupcake;
+|Kunde|
+:Tilføj til kurv;
+    |Website|
+  repeat while (Checkout?) is (nej)
+  -> ja;
+  :Bekræft bestilling;
+  fork
+  |Kunde|
+    :Modtager kvittering;
+  fork again
+  |Butik|
+    :Modtager ordre;
+    :Laver cupcakes;
+
+  end fork {Levering klar}
+  :Kunde afhenter;
+  stop;
+
+@enduml
