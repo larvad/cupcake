@@ -28,25 +28,29 @@
     <section class="main register">
         <div class="container">
             <p class="title">Ny bruger</p>
-            <form>
-                <div class="form-control">
-                    <input type="text" placeholder="Username">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="form-control">
-                    <input type="text" placeholder="E-mail">
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <div class="form-control">
-                    <input type="password" placeholder="Password">
-                    <i class="fas fa-unlock"></i>
-                </div>
-                <div class="form-control">
-                    <input type="password" placeholder="Confirm password">
-                    <i class="fas fa-lock"></i>
-                </div>
 
-                <button class="submit">Registrer</button>
+            <form action="createuser" method="post">
+                <label for="newUser">Username: </label>
+                <input type="text" id="newUser" name="username"/>
+                <br> <br>
+
+                <label for="password1">Password: </label>
+                <input type="password" id="password1" name="password1"/>
+                <br><br>
+                <label for="password2">Confirm password: </label>
+                <input type="password" id="password2" name="password2"/>
+                <br><br>
+
+                <label for="email1">Email:</label>
+                <input type="text" id="email1" name="email1">
+                <br><br>
+                <label for="email2">Confirm email:</label>
+                <input type="text" id="email2" name="email2">
+                <br><br>
+
+                <!--    <label for="admin">Admin:</label>
+                    <input type="checkbox" id="admin" name="admin"> -->
+                <input type="submit"  value="Create user"/>
             </form>
         </div>
     </section>
