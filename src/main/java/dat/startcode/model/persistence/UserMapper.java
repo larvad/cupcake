@@ -98,7 +98,7 @@ public class UserMapper implements IUserMapper
         Logger.getLogger("web").log(Level.INFO, "");
         User user;
 
-        String sql = "UPDATE `cupcake`.`user` SET `username` = ?, `password` = ?, `email` = ?, `isAdmin` = ? WHERE (`email` = ?);";
+        String sql = "UPDATE `user` SET `username` = ?, `password` = ?, `email` = ?, `isAdmin` = ? WHERE (`email` = ?);";
 
         try (Connection connection = connectionPool.getConnection())
         {

@@ -87,10 +87,19 @@ class UserMapperTest {
     }
 
     @Test
-    void updateUserBalance() throws DatabaseException {
+    void addUserBalance() throws DatabaseException {
         User user = userMapper.login("a@a.dk", "1234");
         int actualBalance = userMapper.updateUserBalance(user, 10);
         int expectedBalance = 10;
+        assertEquals(expectedBalance, actualBalance);
+    }
+
+    @Test
+    void subUserBalance() throws DatabaseException {
+        User user = userMapper.login("a@a.dk", "1234");
+        user.setBalance(userMapper.updateUserBalance(user, -10));
+        int actualBalance = user.getBalance();
+        int expectedBalance = -10;
         assertEquals(expectedBalance, actualBalance);
     }
 

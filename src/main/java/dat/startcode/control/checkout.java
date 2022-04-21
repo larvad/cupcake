@@ -6,6 +6,7 @@ import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 import dat.startcode.model.persistence.ConnectionPool;
 import dat.startcode.model.persistence.CupcakeMapper;
+import dat.startcode.model.persistence.UserMapper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -128,8 +129,10 @@ public class checkout extends HttpServlet {
                     }
 
                     cartCupcakes = new ArrayList<>();
+                    UserMapper userMapper = new UserMapper(connectionPool);
                     session.setAttribute("cartCupcakes", cartCupcakes);
                     session.setAttribute("orderId", orderId);
+                    user.setBalance(userMapper.updateUserBalance(user, -((Integer) session.getAttribute("totalPrice"))));
                     request.getRequestDispatcher("checkoutComplete.jsp").forward(request, response);
 
                 }
