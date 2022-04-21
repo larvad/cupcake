@@ -4,6 +4,8 @@ import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,7 +19,7 @@ public class UserMapper implements IUserMapper
     }
 
     @Override
-    public User login(String username, String password) throws DatabaseException
+    public User login(String email, String password) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
 
@@ -29,7 +31,7 @@ public class UserMapper implements IUserMapper
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
-                ps.setString(1, username);
+                ps.setString(1, email);
                 ps.setString(2, password);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next())
@@ -37,7 +39,7 @@ public class UserMapper implements IUserMapper
                     int id = rs.getInt("user_id");
                     boolean isAdmin = rs.getBoolean("isAdmin");
                     String role = isAdmin ? "admin" : "user";  // yep, "if else" in one line (look up "tertiary operators")
-                    String email = rs.getString("email");
+                    String username = rs.getString("username");
 
                     int balance = rs.getInt("balance");
                     user = new User(username, password, email, role, balance);
@@ -156,7 +158,7 @@ public class UserMapper implements IUserMapper
     }
 
     @Override
-    public int getUserId(User user) { // is only called on user object creation
+    public int getUserId(User user){ // is only called on user object creation
         int userId = 0;               // so the user actually gets their id :)
         String sql = "SELECT user_id FROM user " +
                      "WHERE email = ?"; // uses email to get user_id, as it should be unique
@@ -173,5 +175,59 @@ public class UserMapper implements IUserMapper
             e.printStackTrace();
         }
         return userId;
+    }
+
+    @Override
+    public List<User> getUsers() {
+        List<User> userList = new ArrayList<>();
+
+        String sql = "SELECT * FROM user";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int userId = rs.getInt("user_id");
+                    String username = rs.getString("username");
+                    String password = rs.getString("password");
+                    String email = rs.getString("email");
+                    String role = rs.getBoolean("isAdmin") ? "admin" : "user";
+                    int balance = rs.getInt("balance");
+                    User user = new User(username, password, email, role, balance);
+                    user.setId(userId);
+                    userList.add(user);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
+
+    @Override
+    public User getUserById(int id) {
+        User user = null;
+
+        String sql = "SELECT * FROM user WHERE user_id = ?";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, id);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    int userId = rs.getInt("user_id");
+                    String username = rs.getString("username");
+                    String password = rs.getString("password");
+                    String email = rs.getString("email");
+                    String role = rs.getBoolean("isAdmin") ? "admin" : "user";
+                    int balance = rs.getInt("balance");
+                    user = new User(username, password, email, role, balance);
+                    user.setId(userId);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 }

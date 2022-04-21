@@ -11,4 +11,7 @@ public interface IUserMapper
     public int updateUserBalance(User user, int amountToAdd) throws DatabaseException;
     public int getUserId(User user) throws DatabaseException;
 
+    Object getUsers();
+
+    User getUserById(int id);
 }
