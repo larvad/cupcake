@@ -2,12 +2,53 @@
 
 }
 
+.orderHeader {
+    background-color: #c471ed !important;
+    color: white;
+    font-family: "Arial Black", Gadget, sans-serif;
+
+}
+
+.orderBody .orderTop {
+    margin-top: -60px;
+    margin-bottom: 20px;
+
+}
 .orderBody {
 
+    background-color: #130f40;
+    color: white;
+}
+.orderBody .prisOgAntal {
+
+    margin-top: -10px;
+    font-size: 12px;
+
+}
+.orderTop p{
+
+    color: #b6a9a9;
+    font-size: 9px !important;
+}
+
+
+.orderBody .total-amount {
+
+    margin-bottom: 10px;
+    font-size: 50px;
+}
+.orderBody .prisTotal {
+    padding-top: 12px;
+    margin-bottom: -10px;
+}
+.orderBody .items {
+
+    padding-top: 10px;
 }
 .orderItem {
 
 }
+
 
 .cart-detail-img3 img {
     height: 50px;

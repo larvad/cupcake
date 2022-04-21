@@ -47,7 +47,7 @@ public class myOrders extends HttpServlet {
             List<OrderDTO> cupcakeOrders = new ArrayList<>();
             List<CupcakeDTO> cupcakeDTOs = new ArrayList<>();
             LineDTO tempLineDTO = null;
-            int cupcakeeId = 0;
+            int cupcakeeId = 1;
 
             for (LineDTO cupcakeLine : cupcakeLines) {
 
@@ -57,7 +57,7 @@ public class myOrders extends HttpServlet {
 
                         cupcakeOrders.add(new OrderDTO(tempLineDTO.getOrderId(), tempLineDTO.getTotal_price(), cupcakeDTOs));
                         cupcakeDTOs = new ArrayList<>();
-                        cupcakeeId = 0;
+                        cupcakeeId = 1;
                     }
 
                 }
