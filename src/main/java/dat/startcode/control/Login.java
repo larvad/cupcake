@@ -59,14 +59,14 @@ public class Login extends HttpServlet
         cupcakeMapper = new CupcakeMapper(connectionPool);
         User user = null;
         List<CupcakeDTO> cartCupcakes = new ArrayList<>();
-        String username = request.getParameter("username");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
 
         try
         {
             List<BotDTO> BotDTOList = cupcakeMapper.getCupcakesBot();
             List<TopDTO> TopDTOList = cupcakeMapper.getCupcakesTop();
-            user = userMapper.login(username, password);
+            user = userMapper.login(email, password);
             session = request.getSession();
             session.setAttribute("cartCupcakes", cartCupcakes);
             session.setAttribute("topping", TopDTOList);

@@ -114,7 +114,7 @@ public class UserMapper implements IUserMapper
                 if (rowsAffected == 1)
                 {
                     String role = isAdmin ? "admin" : "user";
-                    user = new User(currentEmail, password, email, role);
+                    user = new User(newUsername, password, email, role);
                     user.setId(this);
                 } else
                 {

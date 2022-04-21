@@ -120,4 +120,13 @@ class UserMapperTest {
 
         assertEquals(expectedUser, actualUser);
     }
+
+    @Test
+    void updateUser() throws DatabaseException {
+        User actualUser = userMapper.updateUser("u@u.dk", "12345", "u5@u.dk", "userTest", true);
+        User expectedUser = new User("userTest", "12345", "u5@u.dk", "admin", 0);
+        expectedUser.setId(actualUser.getId());
+
+        assertEquals(expectedUser, actualUser);
+    }
 }

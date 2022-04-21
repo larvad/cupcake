@@ -70,7 +70,7 @@
             <p class="title">Log ind</p>
             <form action="login" method="post">
                 <div class="form-control">
-                    <input type="text" placeholder="Username" id="username" name="username">
+                    <input type="text" placeholder="Email" id="username" name="email">
                     <i class="fas fa-user"></i>
                 </div>
                 <div class="form-control">
