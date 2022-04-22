@@ -11,81 +11,44 @@
 
 
     <jsp:attribute name="footer">
-        Welcome to your profile
     </jsp:attribute>
 
     <jsp:body>
     <c:if test="${sessionScope.user != null}">
-        <p>You are logged in as "${sessionScope.user.username}".</p>
-        <br>
-
         <h1>${requestScope.errormsg}</h1>
 
-        <p>Update account info: </p>
         <form action="updateuser" method="post">
+            <div class="kontoForm">
 
-            <label for="newUsername">New username: </label>
-            <input type="text" id="newUsername" name="newUsername"/>
-            <br><br>
+                <h1>Update acount info</h1>
+                <div class="kontoForm højreSide">
+                    <input type="text" id="newUsername" name="newUsername"/>
+                    <input type="password" id="newPassword" name="newPassword">
+                    <input type="password" id="confirmNewPassword" name="confirmNewPassword">
+                    <input type="text" id="newEmail" name="newEmail">
+                    <input type="text" id="confirmNewEmail" name="confirmNewEmail">
+                    <input type="password" id="oldPassword" name="oldPassword">
+                </div>
+                <div class="kontoForm vestreSide">
+                    <label for="newUsername">New username: </label>
+                    <label for="newPassword">New password</label>
+                    <label for="confirmNewPassword">Confirm new password</label>
+                    <label for="newEmail">New email</label>
+                    <label for="confirmNewEmail">Confirm email</label>
+                    <label for="oldPassword">Old password</label>
 
-            <label for="newPassword">New password</label>
-            <input type="password" id="newPassword" name="newPassword">
-            <br><br>
+                </div>
 
-            <label for="confirmNewPassword">Confirm new password</label>
-            <input type="password" id="confirmNewPassword" name="confirmNewPassword">
-            <br><br>
-
-            <label for="newEmail">New email</label>
-            <input type="text" id="newEmail" name="newEmail">
-            <br><br>
-
-            <label for="confirmNewEmail">Confirm email</label>
-            <input type="text" id="confirmNewEmail" name="confirmNewEmail">
-            <br><br><br>
-
-            <label for="oldPassword">Old password</label>
-            <input type="password" id="oldPassword" name="oldPassword">
-
-
-            <input type="submit"  value="Update user"/>
+            </div>
+        <div class="kontoForm2">
+            <input class="btn-shop btn-shop1 btn-order" type="submit"  value="Update user"/>
+        </div>
         </form>
     </c:if>
 
     <c:if test="${sessionScope.user == null}">
-        <p>You are not logged in yet. You can do it here: <a
-                href="login.jsp">Login</a></p>
-
-        <h1>${requestScope.errormsg}</h1>
-
-        <p>Or create a new user below</p>
-
-        <form action="createuser" method="post">
-            <label for="username">Username: </label>
-            <input type="text" id="username" name="username"/>
-            <br> <br>
-
-            <label for="password1">Password: </label>
-            <input type="password" id="password1" name="password1"/>
-            <br><br>
-            <label for="password2">Confirm password: </label>
-            <input type="password" id="password2" name="password2"/>
-            <br><br>
-
-            <label for="email1">Email:</label>
-            <input type="text" id="email1" name="email1">
-            <br><br>
-            <label for="email2">Confirm email:</label>
-            <input type="text" id="email2" name="email2">
-            <br><br>
-
-        <!--    <label for="admin">Admin:</label>
-            <input type="checkbox" id="admin" name="admin"> -->
-            <input type="submit"  value="Create user"/>
-        </form>
+        <meta http-equiv = "refresh" content = "0; url = login.jsp" />
     </c:if>
-
-
 
 </jsp:body>
 

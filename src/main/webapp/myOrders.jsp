@@ -14,7 +14,7 @@
 
   <jsp:body>
     <c:if test="${sessionScope.user != null}">
-      <h1>Kvitteringer</h1>
+      <h1 class="orderTitle">Dine køb</h1>
 
       <div class="d-flex flex-wrap ">
         <c:forEach var="o" items="${sessionScope.cupcakeOrders}">

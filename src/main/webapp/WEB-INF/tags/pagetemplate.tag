@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/shoppingCart.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/checkout.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/myOrders.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/profile.css">
 
     <!-- Bootstrap CSS og JS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -110,7 +111,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <li class="dropdown well" style="padding-left: -200px !important; padding-top: -100px !important; margin-right: -70px; margin-left: -120px;" >
+                            <li class="dropdown well" style="padding-left: -200px !important; padding-top: -100px !important; margin-right: -70px; margin-left: -100px;" >
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-user" aria-hidden="true"></i>${sessionScope.email}
                                 </a>
@@ -146,7 +147,7 @@
 </div>
 
 <!-- Footer -->
-<div class="my-5">
+<div class="footerClass">
     <section class="">
         <footer class="text-center text-white" style="background-color: #130f40;">
             <div class="container p-4 pb-0">

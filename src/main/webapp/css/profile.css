@@ -1,0 +1,60 @@
+.kontoForm {
+
+    font-family: "Arial Black", Gadget, sans-serif;
+    height: 550px;
+    background-color: #130f40;
+}
+.kontoForm2 {
+
+    font-family: "Arial Black", Gadget, sans-serif;
+    height: 300px;
+    background-color: #130f40;
+}
+.kontoForm input {
+
+    font-size: 20px;
+}
+.kontoForm h1 {
+
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.højreSide {
+
+    width: 50%;
+    float: right;
+
+}
+.højreSide input {
+    margin-left: 50px;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+.vestreSide {
+
+    width: 50%;
+    float: left;
+}
+.vestreSide label {
+
+    color: #ffffff;
+    margin-left: 150px;
+    padding-top: -10px;
+    padding-right: 50px;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+.kontoForm .fill {
+    margin-bottom: 50px;
+}
+.kontoForm2 .btn-order {
+    margin-left: 400px;
+}
+.btn-order {
+    width: 300px;
+
+}

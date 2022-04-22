@@ -31,6 +31,16 @@
     font-size: 9px !important;
 }
 
+.orderTitle {
+    text-align: center;
+    font-family: "Arial Black", Gadget, sans-serif;
+    color: #130f40;
+    font-size: 50px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    margin-top: 30px;
+
+}
 
 .orderBody .total-amount {
 

@@ -85,6 +85,7 @@ public class UpdateUser extends HttpServlet
                 user = userMapper.updateUser(email, newPassword, newEmail, newUsername, isAdmin);
                 session = request.getSession();
                 session.setAttribute("user", user);
+                session.setAttribute("email", newEmail);
                 request.getRequestDispatcher("index.jsp").forward(request, response);
 
             } catch (DatabaseException e) {

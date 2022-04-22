@@ -66,6 +66,7 @@
                 </div>
                 <div class="boxBottom boxesRight boxesLeft"></div>
             </form>
+            <div style="margin-bottom: 150px"></div>
         </c:if>
         <c:if test="${sessionScope.user == null}">
             <meta http-equiv = "refresh" content = "0; url = login.jsp" />
