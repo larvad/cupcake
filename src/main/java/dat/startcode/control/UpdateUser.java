@@ -57,24 +57,26 @@ public class UpdateUser extends HttpServlet
         String oldPassword = request.getParameter("oldPassword");
 
         // Hvis blanketten ikke er udfyldt sættes brugernavn til forrige
-        if (newUsername == null) {
+        if (newUsername.equals("")) {
             newUsername = username;
         }
 
         // Hvis den nye kode ikke er udfyldt, eller de to indtastede koder ikke stemmer overens sættes koden til forrige.
-        if (newPassword == null) {
+        if (newPassword.equals("")) {
             newPassword = password;
+            confirmNewPassword = password;
         }
-        if (newPassword != null && !newPassword.equals(confirmNewPassword)) {
+        if (!newPassword.equals("") && !newPassword.equals(confirmNewPassword)) {
                 request.setAttribute("errormsg", "You failed to confirm your new password.");
                 request.getRequestDispatcher("profile.jsp").forward(request, response);
         }
 
         // Hvis blanketten er udfyldt og de to nye emails stemmer overens skiftes emailen
-        if (newEmail == null) {
+        if (newEmail.equals("")) {
             newEmail = email;
+            confirmNewEmail = email;
         }
-        if (newEmail != null && !newEmail.equals(confirmNewEmail)) {
+        if (!newEmail.equals("") && !newEmail.equals(confirmNewEmail)) {
                 request.setAttribute("errormsg", "You failed to confirm your new email.");
                 request.getRequestDispatcher("profile.jsp").forward(request, response);
         }
@@ -82,7 +84,7 @@ public class UpdateUser extends HttpServlet
 
         if (oldPassword.equals(password)) { //kør hvis det indtastede kodeord matcher det nuværende.
             try {
-                user = userMapper.updateUser(email, newPassword, newEmail, newUsername, isAdmin);
+                user = userMapper.updateUser(user.getId(), newPassword, newEmail, newUsername, isAdmin);
                 session = request.getSession();
                 session.setAttribute("user", user);
                 session.setAttribute("email", newEmail);

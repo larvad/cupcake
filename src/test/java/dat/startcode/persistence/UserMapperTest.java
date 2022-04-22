@@ -132,7 +132,8 @@ class UserMapperTest {
 
     @Test
     void updateUser() throws DatabaseException {
-        User actualUser = userMapper.updateUser("u@u.dk", "12345", "u5@u.dk", "userTest", true);
+        int userId = userMapper.login("u@u.dk", "1234").getId();
+        User actualUser = userMapper.updateUser(userId, "12345", "u5@u.dk", "userTest", true);
         User expectedUser = new User("userTest", "12345", "u5@u.dk", "admin", 0);
         expectedUser.setId(actualUser.getId());
 
