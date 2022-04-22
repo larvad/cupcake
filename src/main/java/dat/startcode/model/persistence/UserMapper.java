@@ -93,12 +93,12 @@ public class UserMapper implements IUserMapper
     }
 
     @Override
-    public User updateUser(String currentEmail, String password, String email, String newUsername, boolean isAdmin) throws DatabaseException
+    public User updateUser(int userId, String password, String email, String newUsername, boolean isAdmin) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
         User user;
 
-        String sql = "UPDATE `user` SET `username` = ?, `password` = ?, `email` = ?, `isAdmin` = ? WHERE (`email` = ?);";
+        String sql = "UPDATE `user` SET `username` = ?, `password` = ?, `email` = ?, `isAdmin` = ? WHERE (`user_id` = ?);";
 
         try (Connection connection = connectionPool.getConnection())
         {
@@ -108,7 +108,7 @@ public class UserMapper implements IUserMapper
                 ps.setString(2, password);
                 ps.setString(3, email);
                 ps.setBoolean(4, isAdmin);
-                ps.setString(5, currentEmail);
+                ps.setInt(5, userId);
 
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)
@@ -118,7 +118,7 @@ public class UserMapper implements IUserMapper
                     user.setId(this);
                 } else
                 {
-                    throw new DatabaseException("The user with email = " + currentEmail + " could not be inserted into the database");
+                    throw new DatabaseException("The user with id = " + userId + " could not be inserted into the database");
                 }
             }
         }
