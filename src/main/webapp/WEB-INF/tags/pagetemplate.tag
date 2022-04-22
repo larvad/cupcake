@@ -118,7 +118,11 @@
                                 <div class="dropdown-menu" style="width: 200px !important; left: -55px !important;" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="${pageContext.request.contextPath}/profile.jsp">Profile</a>
                                     <a class="dropdown-item" href="${pageContext.request.contextPath}/myOrders">Mine køb</a>
+                                    <c:if test="${sessionScope.user.role eq 'admin'}">
+                                        <a class="dropdown-item" style="color: #12c2e9" href="${pageContext.request.contextPath}/admin.jsp">Admin</a>
+                                    </c:if>
                                     <a class="dropdown-item" style="color: #F64F59FF" href="${pageContext.request.contextPath}/logout">Logout</a>
+
                                 </div>
                             </li>
                         </a>

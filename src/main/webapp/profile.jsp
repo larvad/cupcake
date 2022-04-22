@@ -6,7 +6,6 @@
 <t:pagetemplate>
 
     <jsp:attribute name="header">
-         Welcome to your profile
     </jsp:attribute>
 
 
@@ -17,6 +16,7 @@
     <c:if test="${sessionScope.user != null}">
         <h1>${requestScope.errormsg}</h1>
 
+        <div class="topmargin"></div>
         <form action="updateuser" method="post">
             <div class="kontoForm">
 
