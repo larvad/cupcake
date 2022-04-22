@@ -18,14 +18,12 @@
         <c:if test="${sessionScope.user.role eq 'admin'}">
             <label for="admintab">Choose to view:</label>
             <select name="admintab" id="admintab">
+                <option value="users" selected>Users</option>
                 <option value="orders">Orders</option>
-                <option value="users">Users</option>
-                    <%--<option value="sami">Sami</option>
-                    <option value="blob">Blob</option>--%>
             </select>
             <br><br>
 
-            <div id="userTab" style="display: none">
+            <div id="userTab" style="display: block">
                 <table class="table table-hover">
                     <thead>
                     <tr>
